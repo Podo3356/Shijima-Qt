@@ -17,9 +17,16 @@ GeminiClient::GeminiClient(QObject *parent)
 
 void GeminiClient::askPet(const PetContext &ctx)
 {
-    const QString apiKey = qEnvironmentVariable("GEMINI_API_KEY");
+    QSettings settings;
+    QString apiKey = settings.value("Gemini/ApiKey").toString();
+
+    // fallback(환경변수)
     if (apiKey.isEmpty()) {
-        qWarning() << "[GeminiClient] GEMINI_API_KEY is not set, skipping request";
+        apiKey = qEnvironmentVariable("GEMINI_API_KEY");
+    }
+    
+    if (apiKey.isEmpty()) {
+        qWarning() << "[GeminiClient] Gemini API key not set.";
         return;
     }
 
