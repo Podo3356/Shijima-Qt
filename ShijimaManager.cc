@@ -298,7 +298,8 @@ void ShijimaManager::buildToolbar() {
     QAction *action;
     QMenu *menu;
     QMenu *submenu;
-    
+
+    // File
     menu = menuBar()->addMenu("File");
     {
         action = menu->addAction("Import shimeji...");
@@ -313,18 +314,19 @@ void ShijimaManager::buildToolbar() {
         connect(action, &QAction::triggered, this, &ShijimaManager::quitAction);
     }
 
+    // Edit
     menu = menuBar()->addMenu("Edit");
     {
         action = menu->addAction("Delete shimeji", QKeySequence::StandardKey::Delete);
         connect(action, &QAction::triggered, this, &ShijimaManager::deleteAction);
     }
 
+    // Settings
     menu = menuBar()->addMenu("Settings");
     {
         {
             static const QString key = "multiplicationEnabled";
-            bool initial = m_settings.value(key, 
-                QVariant::fromValue(true)).toBool();
+            bool initial = m_settings.value(key, QVariant::fromValue(true)).toBool();
 
             action = menu->addAction("Enable multiplication");
             action->setCheckable(true);
@@ -332,54 +334,40 @@ void ShijimaManager::buildToolbar() {
             for (auto &env : m_env) {
                 env->allows_breeding = initial;
             }
-            connect(action, &QAction::triggered, [this](bool checked){
+            connect(action, &QAction::triggered, [this, key](bool checked){
                 for (auto &env : m_env) {
                     env->allows_breeding = checked;
                 }
-                {
-                    QAction *geminiAction = menu->addAction("Set Gemini API Key...");
-                    QObject::connect(geminiAction, &QAction::triggered, [this]() 
-                    {
-                        bool ok = false;
-                        QSettings settings;
-                        QString oldKey = settings.value("Gemini/ApiKey").toString();
-                        
-                        QString key =
-                            QInputDialog::getText(
-                                this,
-                                "Gemini API Key",
-                                "Enter your Gemini API Key:",
-                                QLineEdit::Normal,
-                                oldKey,
-                                &ok
-                            );
-                        
-                        if (ok) {
-                            settings.setValue("Gemini/ApiKey", key);
-                            QMessageBox::information(
-                                this,
-                                "Saved",
-                                "Gemini API Key has been saved."
-                            );
-                        }
-                    });
-                }
                 m_settings.setValue(key, QVariant::fromValue(checked));
             });
-            
-    // --- Virtual pet 메뉴 추가 ---
-    menu = menuBar()->addMenu("Pet");
-    {
-        action = menu->addAction("Feed all");
-        QObject::connect(action, &QAction::triggered, [this]() {
-            for (auto mascot : m_mascots) {
-                if (mascot != nullptr) {
-                    mascot->feed();
-                }
-            }
-        });
-    }
+        }
 
+        // <-- 여기에 Gemini API Key 추가 (올바른 위치)
+        {
+            QAction *geminiAction = menu->addAction("Set Gemini API Key...");
+            connect(geminiAction, &QAction::triggered, [this]() {
+                bool ok = false;
+                QSettings settings;
+                QString oldKey = settings.value("Gemini/ApiKey").toString();
+
+                QString key = QInputDialog::getText(
+                    this,
+                    "Gemini API Key",
+                    "Enter your Gemini API Key:",
+                    QLineEdit::Normal,
+                    oldKey,
+                    &ok
+                );
+
+                if (ok) {
+                    settings.setValue("Gemini/ApiKey", key);
+                    QMessageBox::information(
+                        this,
+                        "Saved",
+                        "Gemini API Key has been saved."
+                    );
+                }
+            });
         }
 
         {
@@ -403,8 +391,7 @@ void ShijimaManager::buildToolbar() {
             connect(action, &QAction::triggered, [this](){
                 QColorDialog dialog { this };
                 dialog.setCurrentColor(m_sandboxBackground);
-                int ret = dialog.exec();
-                if (ret == 1) {
+                if (dialog.exec() == 1) {
                     m_sandboxBackground = dialog.selectedColor();
                     m_settings.setValue(key, colorToString(dialog.selectedColor()));
                     updateSandboxBackground();
@@ -496,6 +483,18 @@ void ShijimaManager::buildToolbar() {
                 m_settings.setValue(key, QVariant::fromValue(m_userScale));
             });
         }
+    }
+    // ---- Virtual pet ----
+    menu = menuBar()->addMenu("Pet");
+    {
+        action = menu->addAction("Feed all");
+        connect(action, &QAction::triggered, [this]() {
+            for (auto mascot : m_mascots) {
+                if (mascot != nullptr) {
+                    mascot->feed();
+                }
+            }
+        });
     }
 
     menu = menuBar()->addMenu("Help");
