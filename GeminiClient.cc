@@ -1,5 +1,5 @@
-#include <QSettings>
 #include "GeminiClient.hpp"
+#include <QSettings>
 #include <QCoreApplication>
 #include <QJsonArray>
 #include <QJsonDocument>
