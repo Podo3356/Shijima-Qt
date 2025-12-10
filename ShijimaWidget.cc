@@ -28,6 +28,8 @@
 #include <QDebug>
 #include <QGuiApplication>
 #include <QTextStream>
+#include <QToolTip>
+#include "GeminiClient.hpp"
 #include <shijima/shijima.hpp>
 #include "Platform/Platform.hpp"
 #include "ShimejiInspectorDialog.hpp"
@@ -73,6 +75,13 @@ ShijimaWidget::ShijimaWidget(MascotData *mascotData,
         #endif
         setWindowFlags(flags);
     }
+        // --- virtual pet: eating timer ---
+    m_eatTimer.setParent(this);
+    m_eatTimer.setSingleShot(false);
+    QObject::connect(&m_eatTimer, &QTimer::timeout, [this]() {
+        handleEatStep();
+    });
+    
     setFixedSize(m_windowWidth, m_windowHeight);
 }
 
@@ -115,6 +124,14 @@ void ShijimaWidget::paintEvent(QPaintEvent *event) {
     auto scaledSize = image.size() / m_drawScale;
     QPainter painter(this);
     painter.drawImage(QRect { m_drawOrigin, scaledSize }, image);
+        // --- draw food if present ---
+    if (m_hasFood) {
+        painter.setRenderHint(QPainter::Antialiasing, true);
+        painter.setPen(Qt::NoPen);
+        painter.setBrush(Qt::yellow);
+        painter.drawEllipse(m_foodPos, 6, 6);
+    }
+
 #ifdef __linux__
     if (Platform::useWindowMasks()) {
         m_windowMask = QBitmap::fromPixmap(asset.mask(isMirroredRender())
@@ -250,6 +267,10 @@ void ShijimaWidget::tick() {
         return;
     }
 
+    // virtual pet: time-based state update (approx. 25 fps)
+    m_petState.onTick(1000 / 25);
+
+
     // Tick
     auto prev_frame = m_mascot->state->active_frame;
     m_mascot->tick();
@@ -368,4 +389,77 @@ void ShijimaWidget::mouseReleaseEvent(QMouseEvent *event) {
         m_dragTarget->m_mascot->state->dragging = false;
         setDragTarget(nullptr);
     }
+}
+void ShijimaWidget::feed()
+{
+    // 이미 먹이가 떠 있으면 무시
+    if (m_hasFood) {
+        return;
+    }
+
+    m_hasFood = true;
+    m_eatStep = 0;
+
+    // 캐릭터 머리 근처에 먹이 스폰
+    m_foodPos = m_drawOrigin + QPoint(20, -20);
+
+    startEatingAnimation();
+
+#ifdef SHIJIMA_GEMINI_ENABLED
+    // --- Gemini API 호출 (옵션) ---
+    static GeminiClient *s_gemini = nullptr;
+    if (!s_gemini) {
+        s_gemini = new GeminiClient(qApp);
+        QObject::connect(s_gemini, &GeminiClient::replyReady,
+                         this, [this](const QString &text) {
+            // 위젯 위에 툴팁 형태로 대사 표시
+            QToolTip::showText(
+                mapToGlobal(QPoint(width() / 2, 0)),
+                text,
+                this);
+        });
+    }
+
+    GeminiClient::PetContext ctx;
+    ctx.petName   = mascotName();
+    ctx.hunger    = m_petState.hunger;
+    ctx.fullness  = m_petState.fullness;
+    ctx.affinity  = m_petState.affinity;
+    ctx.mood      = m_petState.mood;
+    ctx.lastEvent = QStringLiteral("사용자가 먹이를 줬다.");
+
+    s_gemini->askPet(ctx);
+#endif
+
+    update();
+}
+
+void ShijimaWidget::startEatingAnimation()
+{
+    if (m_eatTimer.isActive()) {
+        return;
+    }
+    m_eatStep = 0;
+    // 0.5초 간격으로 3단계 (집기 → 씹기 → 삼키기)
+    m_eatTimer.start(500);
+}
+
+void ShijimaWidget::handleEatStep()
+{
+    ++m_eatStep;
+
+    if (m_eatStep == 1) {
+        // 1단계: 집어드는 동작 (프레임은 behaviors.xml에서 처리 가능)
+    } else if (m_eatStep == 2) {
+        // 2단계: 씹는 동작
+    } else if (m_eatStep >= 3) {
+        // 3단계: 삼키기 + 상태 반영
+        m_hasFood = false;
+        m_eatTimer.stop();
+        m_eatStep = 0;
+
+        m_petState.onFed();
+    }
+
+    update();
 }
