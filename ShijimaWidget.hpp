@@ -22,6 +22,8 @@
 #include <memory>
 #include <QRegion>
 #include "Asset.hpp"
+#include <QTimer>
+#include "VirtualPetState.hpp"
 #include "SoundEffectManager.hpp"
 #include <shijima/mascot/manager.hpp>
 #include <shijima/mascot/environment.hpp>
@@ -44,6 +46,9 @@ public:
         int mascotId, bool windowedMode, QWidget *parent = nullptr);
     explicit ShijimaWidget(ShijimaWidget &old, bool windowedMode,
         QWidget *parent = nullptr);
+    // --- Virtual pet API ---
+    VirtualPetState &petState() { return m_petState; }
+    void feed();
     void tick();
     bool pointInside(QPoint const& point);
     int mascotId() { return m_mascotId; }
@@ -100,4 +105,13 @@ private:
     bool m_paused = false;
     bool m_markedForDeletion = false;
     int m_mascotId;
+    // --- Virtual pet state & feeding animation ---
+    VirtualPetState m_petState;
+    bool   m_hasFood   = false;
+    QPoint m_foodPos;
+    int    m_eatStep   = 0;
+    QTimer m_eatTimer;
+
+    void startEatingAnimation();
+    void handleEatStep();
 };
