@@ -336,6 +336,20 @@ void ShijimaManager::buildToolbar() {
                 }
                 m_settings.setValue(key, QVariant::fromValue(checked));
             });
+            
+    // --- Virtual pet 메뉴 추가 ---
+    menu = menuBar()->addMenu("Pet");
+    {
+        action = menu->addAction("Feed all");
+        QObject::connect(action, &QAction::triggered, [this]() {
+            for (auto mascot : m_mascots) {
+                if (mascot != nullptr) {
+                    mascot->feed();
+                }
+            }
+        });
+    }
+
         }
 
         {
