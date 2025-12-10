@@ -17,6 +17,7 @@ SOURCES = main.cc \
 	ShimejiInspectorDialog.cc \
 	DefaultMascot.cc \
 	ShijimaHttpApi.cc \
+    GeminiClient.cc \
 	cli.cc \
 	resources.rc
 
@@ -36,7 +37,8 @@ LICENSE_FILES := Shijima-Qt.LICENSE.txt \
 
 LICENSE_FILES := $(addprefix licenses/,$(LICENSE_FILES))
 
-QT_LIBS = Widgets Core Gui Concurrent
+QT_LIBS = Widgets Core Gui Concurrent Network
+CXXFLAGS += -DSHIJIMA_GEMINI_ENABLED=1
 
 TARGET_LDFLAGS := -Llibshimejifinder/build/unarr -lunarr
 
