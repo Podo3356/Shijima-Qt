@@ -21,6 +21,8 @@
 #include <exception>
 #include <filesystem>
 #include <iostream>
+#include <QInputDialog>
+#include <QMessageBox>
 #include <QVariant>
 #include <QVBoxLayout>
 #include <QWidget>
@@ -333,6 +335,34 @@ void ShijimaManager::buildToolbar() {
             connect(action, &QAction::triggered, [this](bool checked){
                 for (auto &env : m_env) {
                     env->allows_breeding = checked;
+                }
+                {
+                    QAction *geminiAction = menu->addAction("Set Gemini API Key...");
+                    QObject::connect(geminiAction, &QAction::triggered, [this]() 
+                    {
+                        bool ok = false;
+                        QSettings settings;
+                        QString oldKey = settings.value("Gemini/ApiKey").toString();
+                        
+                        QString key =
+                            QInputDialog::getText(
+                                this,
+                                "Gemini API Key",
+                                "Enter your Gemini API Key:",
+                                QLineEdit::Normal,
+                                oldKey,
+                                &ok
+                            );
+                        
+                        if (ok) {
+                            settings.setValue("Gemini/ApiKey", key);
+                            QMessageBox::information(
+                                this,
+                                "Saved",
+                                "Gemini API Key has been saved."
+                            );
+                        }
+                    });
                 }
                 m_settings.setValue(key, QVariant::fromValue(checked));
             });
