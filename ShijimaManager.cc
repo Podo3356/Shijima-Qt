@@ -64,6 +64,13 @@
 #include <QColorDialog>
 #include <cstring>
 #include <cstdint>
+#include <QCoreApplication>
+#include <QTimer>
+#include <QJsonDocument>
+#include <QJsonObject>
+#include <QFile>
+#include <QDebug>
+#include "PetLoader.hpp"      // 우리가 새로 만든 로더
 
 #define SHIJIMAQT_SUBTICK_COUNT 4
 
@@ -342,7 +349,7 @@ void ShijimaManager::buildToolbar() {
             });
         }
 
-        // <-- 여기에 Gemini API Key 추가 (올바른 위치)
+        // Gemini API Key 설정 메뉴
         {
             QAction *geminiAction = menu->addAction("Set Gemini API Key...");
             connect(geminiAction, &QAction::triggered, [this]() {
@@ -474,9 +481,6 @@ void ShijimaManager::buildToolbar() {
                 });
                 dialog.exec();
                 for (auto neighbour : submenu->actions()) {
-                    //double value = neighbour->text().sliced(0, 4).toDouble();
-                    //std::cout << std::fabs(m_userScale - value) << std::endl;
-                    //neighbour->setChecked(std::fabs(m_userScale - value) < 0.01);
                     neighbour->setChecked(false);
                 }
                 customAction->setText(makeCustomActionText());
@@ -484,19 +488,23 @@ void ShijimaManager::buildToolbar() {
             });
         }
     }
-    // ---- Virtual pet ----
+
+    // Pet 메뉴
     menu = menuBar()->addMenu("Pet");
     {
         action = menu->addAction("Feed all");
         connect(action, &QAction::triggered, [this]() {
-            for (auto mascot : m_mascots) {
-                if (mascot != nullptr) {
-                    mascot->feed();
-                }
-            }
+            if (!m_petState.valid)
+                return;
+
+            // 먹이 떨어지는 위치 (펫 머리 위 80px)
+            m_petState.foodPosition = m_petState.position + QPointF(0.0, -80.0);
+            m_petState.hasFoodTarget = true;
+            m_petState.mode = PetMode::MovingToFood;
         });
     }
 
+    // Help
     menu = menuBar()->addMenu("Help");
     {
         action = menu->addAction("View Licenses");
@@ -793,6 +801,26 @@ ShijimaManager::ShijimaManager(QWidget *parent):
     m_listWidget.setSelectionMode(QListWidget::ExtendedSelection);
     setCentralWidget(&m_listWidget);
     buildToolbar();
+    // --- Virtual pet 로딩 ---
+    {
+        const QString petRoot =
+            QCoreApplication::applicationDirPath() + "/Pets/eve";
+        if (!PetLoader::loadPet(petRoot, m_petState)) {
+            qWarning() << "[ShijimaManager] Failed to load virtual pet assets from" << petRoot;
+        } else {
+            qDebug() << "[ShijimaManager] Virtual pet loaded from" << petRoot;
+        }
+    }
+
+    // --- Virtual pet 업데이트 타이머 ---
+    m_petTimer = new QTimer(this);
+    connect(m_petTimer, &QTimer::timeout, [this]() {
+        // 60fps 근처로 가정
+        tickPet(0.016);
+        // 펫이 그려지는 위젯을 다시 그리게 함
+        this->update();
+    });
+    m_petTimer->start(16);
 
     m_httpApi.start("127.0.0.1", 32456);
 }
@@ -1159,6 +1187,58 @@ void ShijimaManager::spawnClicked() {
         if (i++ != target) continue;
         std::cout << "Spawning: " << pair.first << std::endl;
         spawn(pair.first);
+        break;
+    }
+}
+void ShijimaManager::tickPet(double dtSeconds)
+{
+    if (!m_petState.valid)
+        return;
+
+    VirtualPetState &pet = m_petState;
+
+    switch (pet.mode) {
+    case PetMode::IdleWander:
+        pet.position += pet.velocity * dtSeconds;
+        // 간단한 화면 가장자리 반사 (나중에 실제 화면 크기로 조정)
+        if (pet.position.x() < 0) {
+            pet.position.setX(0);
+            pet.velocity.setX(std::abs(pet.velocity.x()));
+            pet.facingLeft = false;
+        }
+        if (pet.position.x() > 800) {
+            pet.position.setX(800);
+            pet.velocity.setX(-std::abs(pet.velocity.x()));
+            pet.facingLeft = true;
+        }
+        break;
+
+    case PetMode::MovingToFood: {
+        QPointF dir = pet.foodPosition - pet.position;
+        const double len2 = dir.x()*dir.x() + dir.y()*dir.y();
+        if (len2 < 4.0) {
+            pet.position = pet.foodPosition;
+            pet.mode = PetMode::Eating;
+            pet.eatingTimer = 2.0;
+            pet.hunger = std::min(1.0, pet.hunger + 0.4);
+        } else {
+            double len = std::sqrt(len2);
+            if (len > 0.0001) {
+                dir /= len;
+            }
+            const double speed = 80.0;
+            pet.position += dir * (speed * dtSeconds);
+            pet.facingLeft = (dir.x() < 0);
+        }
+        break;
+    }
+
+    case PetMode::Eating:
+        pet.eatingTimer -= dtSeconds;
+        if (pet.eatingTimer <= 0.0) {
+            pet.eatingTimer = 0.0;
+            pet.mode = PetMode::IdleWander;
+        }
         break;
     }
 }
