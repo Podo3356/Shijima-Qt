@@ -33,6 +33,7 @@
 #include <set>
 #include <list>
 #include <mutex>
+#include <QTimer>
 #include "VirtualPetState.hpp"
 #include "Platform/ActiveWindowObserver.hpp"
 #include "ShijimaWidget.hpp"
@@ -64,6 +65,8 @@ public:
     ShijimaWidget *hitTest(QPoint const& screenPos);
     void onTickSync(std::function<void(ShijimaManager *)> callback);
     ~ShijimaManager();
+    const VirtualPetState &petState() const { return m_petState; }
+    VirtualPetState &petState() { return m_petState; }
 protected:
     void timerEvent(QTimerEvent *event) override;
     void showEvent(QShowEvent *event) override;
@@ -73,9 +76,11 @@ protected:
     void dropEvent(QDropEvent *event) override;
 private:
     VirtualPetState m_petState;
+    QTimer *m_petTimer = nullptr;
     explicit ShijimaManager(QWidget *parent = nullptr);
     static std::string imgRootForTemplatePath(std::string const& path);
     std::unique_lock<std::mutex> acquireLock();
+    void tickPet(double dtSeconds);
     void loadDefaultMascot();
     void loadData(MascotData *data);
     void spawnClicked();
