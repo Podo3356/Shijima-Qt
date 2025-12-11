@@ -39,7 +39,7 @@ LICENSE_FILES := $(addprefix licenses/,$(LICENSE_FILES))
 QT_LIBS = Widgets Core Gui Concurrent Network
 CXXFLAGS += -DSHIJIMA_GEMINI_ENABLED=1
 
-TARGET_LDFLAGS := -Llibshimejifinder/build/unarr -lunarr
+TARGET_LDFLAGS :=
 
 ifeq ($(PLATFORM),Linux)
 QT_LIBS += DBus
@@ -58,8 +58,8 @@ else
 CXXFLAGS += -DSHIJIMA_USE_QTMULTIMEDIA=0
 endif
 
-CXXFLAGS += -Ilibshijima -Ilibshimejifinder -Icpp-httplib
-PKG_LIBS += libarchive
+CXXFLAGS += -Ilibshijima -Icpp-httplib
+#PKG_LIBS += libarchive
 PUBLISH_DLL = $(addprefix Qt6,$(QT_LIBS))
 
 define download_linuxdeploy
@@ -139,7 +139,7 @@ appimage: publish/Linux/$(CONFIG)/Shijima-Qt.AppImage
 
 macapp: publish/macOS/$(CONFIG)/Shijima-Qt.app
 
-shijima-qt$(EXE): Platform/Platform.a libshimejifinder/build/libshimejifinder.a \
+shijima-qt$(EXE): Platform/Platform.a libshijima/build/libshijima.a shijima-qt.a \
 	libshijima/build/libshijima.a shijima-qt.a
 	$(CXX) -o $@ $(LD_COPY_NEEDED) $(LD_WHOLE_ARCHIVE) $^ $(LD_NO_WHOLE_ARCHIVE) \
 		$(TARGET_LDFLAGS) $(LDFLAGS)
@@ -170,14 +170,14 @@ licenses_generated.hpp: $(LICENSE_FILES) Makefile
 libshijima/build/Makefile: libshijima/CMakeLists.txt FORCE
 	mkdir -p libshijima/build && cd libshijima/build && $(CMAKE) $(CMAKEFLAGS) -DSHIJIMA_BUILD_EXAMPLES=NO ..
 
-libshimejifinder/build/Makefile: libshimejifinder/CMakeLists.txt FORCE
-	mkdir -p libshimejifinder/build && cd libshimejifinder/build && $(CMAKE) $(CMAKEFLAGS) \
-		-DSHIMEJIFINDER_BUILD_LIBARCHIVE=NO -DSHIMEJIFINDER_BUILD_EXAMPLES=NO ..
-
-libshimejifinder/build/libshimejifinder.a: libshimejifinder/build/Makefile
-	$(MAKE) -C libshimejifinder/build
-	if [ $(PLATFORM) = "Windows" ]; then cp libshimejifinder/build/unarr/libunarr.so.1.1.0 \
-		libshimejifinder/build/unarr/libunarr.dll; fi
+#libshimejifinder/build/Makefile: libshimejifinder/CMakeLists.txt FORCE
+#	mkdir -p libshimejifinder/build && cd libshimejifinder/build && $(CMAKE) $(CMAKEFLAGS) \
+#		-DSHIMEJIFINDER_BUILD_LIBARCHIVE=NO -DSHIMEJIFINDER_BUILD_EXAMPLES=NO ..
+#
+#libshimejifinder/build/libshimejifinder.a: libshimejifinder/build/Makefile
+#	$(MAKE) -C libshimejifinder/build
+#	if [ $(PLATFORM) = "Windows" ]; then cp libshimejifinder/build/unarr/libunarr.so.1.1.0 \
+#		libshimejifinder/build/unarr/libunarr.dll; fi
 
 clean::
 	rm -rf publish/$(PLATFORM)/$(CONFIG) libshijima/build libshimejifinder/build
