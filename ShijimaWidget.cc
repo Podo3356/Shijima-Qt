@@ -36,7 +36,6 @@
 #include "AssetLoader.hpp"
 #include "ShijimaContextMenu.hpp"
 #include "ShijimaManager.hpp"
-#include <shimejifinder/utils.hpp>
 
 using namespace shijima;
 
@@ -103,11 +102,21 @@ bool ShijimaWidget::inspectorVisible() {
 }
 
 Asset const& ShijimaWidget::getActiveAsset() {
-    auto &name = m_mascot->state->active_frame.get_name(m_mascot->state->looking_right);
-    auto lowerName = shimejifinder::to_lower(name);
-    auto imagePath = QDir::cleanPath(m_data->imgRoot()
-        + QDir::separator() + QString::fromStdString(lowerName));
-    return AssetLoader::defaultLoader()->loadAsset(imagePath);
+    // 새로운 단일 이미지 기반
+    static Asset singleSpriteAsset;
+
+    // manager 를 통해 VirtualPetState 접근
+    auto mgr = qobject_cast<ShijimaManager*>(window());
+    if (!mgr)
+        return singleSpriteAsset;
+
+    auto &pet = mgr->petState();
+    if (!pet.valid)
+        return singleSpriteAsset;
+
+    // Asset에 pixmap 저장
+    singleSpriteAsset.pixmap = pet.sprite; // Asset 구조에 따라 다름
+    return singleSpriteAsset;
 }
 
 bool ShijimaWidget::isMirroredRender() const {
