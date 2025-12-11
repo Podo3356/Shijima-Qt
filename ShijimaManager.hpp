@@ -33,6 +33,7 @@
 #include <set>
 #include <list>
 #include <mutex>
+#include "VirtualPetState.hpp"
 #include "Platform/ActiveWindowObserver.hpp"
 #include "ShijimaWidget.hpp"
 #include "ShijimaHttpApi.hpp"
@@ -71,6 +72,7 @@ protected:
     void dragEnterEvent(QDragEnterEvent *event) override;
     void dropEvent(QDropEvent *event) override;
 private:
+    VirtualPetState m_petState;
     explicit ShijimaManager(QWidget *parent = nullptr);
     static std::string imgRootForTemplatePath(std::string const& path);
     std::unique_lock<std::mutex> acquireLock();
