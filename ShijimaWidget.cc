@@ -29,6 +29,8 @@
 #include <QGuiApplication>
 #include <QTextStream>
 #include <QToolTip>
+#include <algorithm>
+#include <cctype>
 #include "GeminiClient.hpp"
 #include <shijima/shijima.hpp>
 #include "Platform/Platform.hpp"
@@ -101,22 +103,20 @@ bool ShijimaWidget::inspectorVisible() {
     return m_inspector != nullptr && m_inspector->isVisible();
 }
 
-Asset const& ShijimaWidget::getActiveAsset() {
-    // 새로운 단일 이미지 기반
-    static Asset singleSpriteAsset;
+Asset const& ShijimaWidget::getActiveAsset()
+{
+    // 가상 펫이 아닌, 기존 시메지용 자산 로딩 (원래 방식 유지)
+    auto &name = m_mascot->state->active_frame.get_name(m_mascot->state->looking_right);
 
-    // manager 를 통해 VirtualPetState 접근
-    auto mgr = qobject_cast<ShijimaManager*>(window());
-    if (!mgr)
-        return singleSpriteAsset;
+    // 간단한 소문자 변환 (shimejifinder::to_lower 대신 직접 구현)
+    std::string lowerName = name;
+    std::transform(lowerName.begin(), lowerName.end(), lowerName.begin(),
+        [](unsigned char c){ return static_cast<char>(std::tolower(c)); });
 
-    auto &pet = mgr->petState();
-    if (!pet.valid)
-        return singleSpriteAsset;
+    auto imagePath = QDir::cleanPath(
+        m_data->imgRoot() + QDir::separator() + QString::fromStdString(lowerName));
 
-    // Asset에 pixmap 저장
-    singleSpriteAsset.pixmap = pet.sprite; // Asset 구조에 따라 다름
-    return singleSpriteAsset;
+    return AssetLoader::defaultLoader()->loadAsset(imagePath);
 }
 
 bool ShijimaWidget::isMirroredRender() const {
@@ -124,39 +124,57 @@ bool ShijimaWidget::isMirroredRender() const {
         m_mascot->state->looking_right;
 }
 
-void ShijimaWidget::paintEvent(QPaintEvent *event) {
-    if (!m_visible) {
+void ShijimaWidget::paintEvent(QPaintEvent *event)
+{
+    if (!m_visible)
+        return;
+
+    QPainter painter(this);
+
+    // --- 1) VirtualPet 전용 렌더링 ---
+    if (m_petState.valid && !m_petState.sprite.isNull()) {
+        // 화면 스케일 / 위치는 네가 기존에 쓰던 값 기준으로 맞춰줘
+        const QPixmap &sprite = m_petState.sprite;
+        QSize spriteSize = sprite.size() / m_drawScale;
+
+        QRect targetRect(
+            m_drawOrigin.x(),
+            m_drawOrigin.y(),
+            spriteSize.width(),
+            spriteSize.height()
+        );
+
+        if (m_petState.facingLeft) {
+            // 좌우 반전이 필요하면 여기에서 처리
+            painter.save();
+            painter.translate(targetRect.center().x(), 0);
+            painter.scale(-1.0, 1.0);
+            painter.translate(-targetRect.center().x(), 0);
+            painter.drawPixmap(targetRect, sprite);
+            painter.restore();
+        } else {
+            painter.drawPixmap(targetRect, sprite);
+        }
+
+        // 먹이 / 기타 오버레이가 있으면 여기에서 추가로 그리면 됨
+        // (예: m_foodPosition 에 작은 동그라미 등)
+
         return;
     }
-    auto &asset = getActiveAsset();
-    auto &image = asset.image(isMirroredRender());
-    auto scaledSize = image.size() / m_drawScale;
-    QPainter painter(this);
-    painter.drawImage(QRect { m_drawOrigin, scaledSize }, image);
-        // --- draw food if present ---
-    if (m_hasFood) {
-        painter.setRenderHint(QPainter::Antialiasing, true);
-        painter.setPen(Qt::NoPen);
-        painter.setBrush(Qt::yellow);
-        painter.drawEllipse(m_foodPos, 6, 6);
-    }
 
-#ifdef __linux__
-    if (Platform::useWindowMasks()) {
-        m_windowMask = QBitmap::fromPixmap(asset.mask(isMirroredRender())
-            .scaled(scaledSize));
-        m_windowMask.translate(m_drawOrigin);
-        auto bounding = m_windowMask.boundingRect();
-        bounding.setTop(0);
-        bounding.setLeft(0);
-        if (bounding.width() > 0 && bounding.height() > 0) {
-            setMask(m_windowMask);
-        }
-        else {
-            setMask(QRect { m_windowWidth - 2, m_windowHeight - 2, 1, 1 });
-        }
-    }
-#endif
+    // --- 2) 기존 Shimeji 자산 렌더링 ---
+    Asset const &asset = getActiveAsset();
+    auto const &image = asset.image(isMirroredRender());
+
+    QSize scaledSize = image.size() / m_drawScale;
+    QRect targetRect(
+        m_drawOrigin.x(),
+        m_drawOrigin.y(),
+        scaledSize.width(),
+        scaledSize.height()
+    );
+
+    painter.drawImage(targetRect, image);
 }
 
 bool ShijimaWidget::updateOffsets() {
