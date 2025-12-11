@@ -1,0 +1,904 @@
+dkw01@Podo MINGW64 /c/Users/dkw01/Shijima-Qt
+$ cd /c/Users/dkw01/Shijima-Qt
+make CONFIG=release -j8 shijima-qt.exe
+make -C Platform
+make[1]: Entering directory '/c/Users/dkw01/Shijima-Qt/Platform'
+mkdir -p libshijima/build && cd libshijima/build && cmake -DCMAKE_BUILD_TYPE=Release -DSHIJIMA_BUILD_EXAMPLES=NO ..
+make -C Windows || { rm -f Platform.a && false; }
+-- Configuring done (0.0s)
+make[2]: Entering directory '/c/Users/dkw01/Shijima-Qt/Platform/Windows'
+-- Generating done (0.1s)
+-- Build files have been written to: /c/Users/dkw01/Shijima-Qt/libshijima/build
+cc -MMD -c -Wall -std=c++17 -O3 -flto -DNDEBUG -mwindows -msse2 -IC:/msys64/mingw64/include/qt6/QtWidgets -IC:/msys64/mingw64/include/qt6 -DQT_WIDGETS_LIB -IC:/msys64/mingw64/include/qt6/QtConcurrent -DQT_CONCURRENT_LIB -IC:/msys64/mingw64/include/qt6/QtMultimedia -DQT_MULTIMEDIA_LIB -IC:/msys64/mingw64/include/qt6/QtGui -DQT_GUI_LIB -IC:/msys64/mingw64/include/qt6/QtNetwork -DQT_NETWORK_LIB -IC:/msys64/mingw64/include/qt6/QtCore -DQT_CORE_LIB -IC:/msys64/mingw64/share/qt6/mkspecs/win32-g++ -DWIN32 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -DWIN64 -D_WIN64 -DMINGW_HAS_SECURE_API=1 -D_WIN32_WINNT=0x0A00 -DWINVER=0x0A00  -DSHIJIMA_GEMINI_ENABLED=1 -DSHIJIMA_USE_QTMULTIMEDIA=1 -Ilibshijima -Icpp-httplib  main.cc -o main.o
+make[2]: Nothing to be done for 'all'.
+make[2]: Leaving directory '/c/Users/dkw01/Shijima-Qt/Platform/Windows'
+cp -uv Windows/Windows.a Platform.a
+make[1]: Leaving directory '/c/Users/dkw01/Shijima-Qt/Platform'
+cc -MMD -c -Wall -std=c++17 -O3 -flto -DNDEBUG -mwindows -msse2 -IC:/msys64/mingw64/include/qt6/QtWidgets -IC:/msys64/mingw64/include/qt6 -DQT_WIDGETS_LIB -IC:/msys64/mingw64/include/qt6/QtConcurrent -DQT_CONCURRENT_LIB -IC:/msys64/mingw64/include/qt6/QtMultimedia -DQT_MULTIMEDIA_LIB -IC:/msys64/mingw64/include/qt6/QtGui -DQT_GUI_LIB -IC:/msys64/mingw64/include/qt6/QtNetwork -DQT_NETWORK_LIB -IC:/msys64/mingw64/include/qt6/QtCore -DQT_CORE_LIB -IC:/msys64/mingw64/share/qt6/mkspecs/win32-g++ -DWIN32 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -DWIN64 -D_WIN64 -DMINGW_HAS_SECURE_API=1 -D_WIN32_WINNT=0x0A00 -DWINVER=0x0A00  -DSHIJIMA_GEMINI_ENABLED=1 -DSHIJIMA_USE_QTMULTIMEDIA=1 -Ilibshijima -Icpp-httplib  ShijimaContextMenu.cc -o ShijimaContextMenu.o
+cc -MMD -c -Wall -std=c++17 -O3 -flto -DNDEBUG -mwindows -msse2 -IC:/msys64/mingw64/include/qt6/QtWidgets -IC:/msys64/mingw64/include/qt6 -DQT_WIDGETS_LIB -IC:/msys64/mingw64/include/qt6/QtConcurrent -DQT_CONCURRENT_LIB -IC:/msys64/mingw64/include/qt6/QtMultimedia -DQT_MULTIMEDIA_LIB -IC:/msys64/mingw64/include/qt6/QtGui -DQT_GUI_LIB -IC:/msys64/mingw64/include/qt6/QtNetwork -DQT_NETWORK_LIB -IC:/msys64/mingw64/include/qt6/QtCore -DQT_CORE_LIB -IC:/msys64/mingw64/share/qt6/mkspecs/win32-g++ -DWIN32 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -DWIN64 -D_WIN64 -DMINGW_HAS_SECURE_API=1 -D_WIN32_WINNT=0x0A00 -DWINVER=0x0A00  -DSHIJIMA_GEMINI_ENABLED=1 -DSHIJIMA_USE_QTMULTIMEDIA=1 -Ilibshijima -Icpp-httplib  ShijimaManager.cc -o ShijimaManager.o
+In file included from Platform/ActiveWindow.hpp:21,
+                 from Platform/Platform.hpp:21,
+                 from main.cc:24:
+C:/msys64/mingw64/include/c++/15.2.0/cstdbool:50:6: warning: #warning "<cstdbool> is deprecated in C++17, remove the #include" [-Wcpp]
+   50 | #    warning "<cstdbool> is deprecated in C++17, remove the #include"
+      |      ^~~~~~~
+cc -MMD -c -Wall -std=c++17 -O3 -flto -DNDEBUG -mwindows -msse2 -IC:/msys64/mingw64/include/qt6/QtWidgets -IC:/msys64/mingw64/include/qt6 -DQT_WIDGETS_LIB -IC:/msys64/mingw64/include/qt6/QtConcurrent -DQT_CONCURRENT_LIB -IC:/msys64/mingw64/include/qt6/QtMultimedia -DQT_MULTIMEDIA_LIB -IC:/msys64/mingw64/include/qt6/QtGui -DQT_GUI_LIB -IC:/msys64/mingw64/include/qt6/QtNetwork -DQT_NETWORK_LIB -IC:/msys64/mingw64/include/qt6/QtCore -DQT_CORE_LIB -IC:/msys64/mingw64/share/qt6/mkspecs/win32-g++ -DWIN32 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -DWIN64 -D_WIN64 -DMINGW_HAS_SECURE_API=1 -D_WIN32_WINNT=0x0A00 -DWINVER=0x0A00  -DSHIJIMA_GEMINI_ENABLED=1 -DSHIJIMA_USE_QTMULTIMEDIA=1 -Ilibshijima -Icpp-httplib  ShijimaWidget.cc -o ShijimaWidget.o
+In file included from Platform/ActiveWindow.hpp:21,
+                 from Platform/Platform.hpp:21,
+                 from PlatformWidget.hpp:25,
+                 from ShijimaWidget.hpp:30,
+                 from ShijimaContextMenu.hpp:22,
+                 from ShijimaContextMenu.cc:19:
+C:/msys64/mingw64/include/c++/15.2.0/cstdbool:50:6: warning: #warning "<cstdbool> is deprecated in C++17, remove the #include" [-Wcpp]
+   50 | #    warning "<cstdbool> is deprecated in C++17, remove the #include"
+      |      ^~~~~~~
+touch ShijimaLicensesDialog.cc
+In file included from Platform/ActiveWindow.hpp:21,
+                 from Platform/Platform.hpp:21,
+                 from PlatformWidget.hpp:25,
+                 from ShijimaManager.hpp:31,
+                 from ShijimaManager.cc:19:
+C:/msys64/mingw64/include/c++/15.2.0/cstdbool:50:6: warning: #warning "<cstdbool> is deprecated in C++17, remove the #include" [-Wcpp]
+   50 | #    warning "<cstdbool> is deprecated in C++17, remove the #include"
+      |      ^~~~~~~
+cc -MMD -c -Wall -std=c++17 -O3 -flto -DNDEBUG -mwindows -msse2 -IC:/msys64/mingw64/include/qt6/QtWidgets -IC:/msys64/mingw64/include/qt6 -DQT_WIDGETS_LIB -IC:/msys64/mingw64/include/qt6/QtConcurrent -DQT_CONCURRENT_LIB -IC:/msys64/mingw64/include/qt6/QtMultimedia -DQT_MULTIMEDIA_LIB -IC:/msys64/mingw64/include/qt6/QtGui -DQT_GUI_LIB -IC:/msys64/mingw64/include/qt6/QtNetwork -DQT_NETWORK_LIB -IC:/msys64/mingw64/include/qt6/QtCore -DQT_CORE_LIB -IC:/msys64/mingw64/share/qt6/mkspecs/win32-g++ -DWIN32 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -DWIN64 -D_WIN64 -DMINGW_HAS_SECURE_API=1 -D_WIN32_WINNT=0x0A00 -DWINVER=0x0A00  -DSHIJIMA_GEMINI_ENABLED=1 -DSHIJIMA_USE_QTMULTIMEDIA=1 -Ilibshijima -Icpp-httplib  DefaultMascot.cc -o DefaultMascot.o
+In file included from Platform/ActiveWindow.hpp:21,
+                 from Platform/Platform.hpp:21,
+                 from PlatformWidget.hpp:25,
+                 from ShijimaWidget.hpp:30,
+                 from ShijimaWidget.cc:19:
+C:/msys64/mingw64/include/c++/15.2.0/cstdbool:50:6: warning: #warning "<cstdbool> is deprecated in C++17, remove the #include" [-Wcpp]
+   50 | #    warning "<cstdbool> is deprecated in C++17, remove the #include"
+      |      ^~~~~~~
+cc -MMD -c -Wall -std=c++17 -O3 -flto -DNDEBUG -mwindows -msse2 -IC:/msys64/mingw64/include/qt6/QtWidgets -IC:/msys64/mingw64/include/qt6 -DQT_WIDGETS_LIB -IC:/msys64/mingw64/include/qt6/QtConcurrent -DQT_CONCURRENT_LIB -IC:/msys64/mingw64/include/qt6/QtMultimedia -DQT_MULTIMEDIA_LIB -IC:/msys64/mingw64/include/qt6/QtGui -DQT_GUI_LIB -IC:/msys64/mingw64/include/qt6/QtNetwork -DQT_NETWORK_LIB -IC:/msys64/mingw64/include/qt6/QtCore -DQT_CORE_LIB -IC:/msys64/mingw64/share/qt6/mkspecs/win32-g++ -DWIN32 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -DWIN64 -D_WIN64 -DMINGW_HAS_SECURE_API=1 -D_WIN32_WINNT=0x0A00 -DWINVER=0x0A00  -DSHIJIMA_GEMINI_ENABLED=1 -DSHIJIMA_USE_QTMULTIMEDIA=1 -Ilibshijima -Icpp-httplib  ShijimaHttpApi.cc -o ShijimaHttpApi.o
+make -C libshijima/build
+make[1]: Entering directory '/c/Users/dkw01/Shijima-Qt/libshijima/build'
+cc -MMD -c -Wall -std=c++17 -O3 -flto -DNDEBUG -mwindows -msse2 -IC:/msys64/mingw64/include/qt6/QtWidgets -IC:/msys64/mingw64/include/qt6 -DQT_WIDGETS_LIB -IC:/msys64/mingw64/include/qt6/QtConcurrent -DQT_CONCURRENT_LIB -IC:/msys64/mingw64/include/qt6/QtMultimedia -DQT_MULTIMEDIA_LIB -IC:/msys64/mingw64/include/qt6/QtGui -DQT_GUI_LIB -IC:/msys64/mingw64/include/qt6/QtNetwork -DQT_NETWORK_LIB -IC:/msys64/mingw64/include/qt6/QtCore -DQT_CORE_LIB -IC:/msys64/mingw64/share/qt6/mkspecs/win32-g++ -DWIN32 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -DWIN64 -D_WIN64 -DMINGW_HAS_SECURE_API=1 -D_WIN32_WINNT=0x0A00 -DWINVER=0x0A00  -DSHIJIMA_GEMINI_ENABLED=1 -DSHIJIMA_USE_QTMULTIMEDIA=1 -Ilibshijima -Icpp-httplib  ShijimaLicensesDialog.cc -o ShijimaLicensesDialog.o
+[100%] Built target shijima
+make[1]: Leaving directory '/c/Users/dkw01/Shijima-Qt/libshijima/build'
+In file included from Platform/ActiveWindow.hpp:21,
+                 from Platform/Platform.hpp:21,
+                 from PlatformWidget.hpp:25,
+                 from ShijimaManager.hpp:31,
+                 from ShijimaHttpApi.cc:21:
+C:/msys64/mingw64/include/c++/15.2.0/cstdbool:50:6: warning: #warning "<cstdbool> is deprecated in C++17, remove the #include" [-Wcpp]
+   50 | #    warning "<cstdbool> is deprecated in C++17, remove the #include"
+      |      ^~~~~~~
+ShijimaWidget.cc: In member function 'const Asset& ShijimaWidget::getActiveAsset()':
+ShijimaWidget.cc:118:23: error: 'class Asset' has no member named 'pixmap'
+  118 |     singleSpriteAsset.pixmap = pet.sprite; // Asset 援ъ“???곕씪 ?ㅻ쫫
+      |                       ^~~~~~
+
+ShijimaWidget.cc: In member function 'void ShijimaWidget::tick()':
+ShijimaWidget.cc:280:16: error: 'struct VirtualPetState' has no member named 'onTick'
+  280 |     m_petState.onTick(1000 / 25);
+      |                ^~~~~~
+ShijimaWidget.cc: In member function 'void ShijimaWidget::feed()':
+ShijimaWidget.cc:435:32: error: 'struct VirtualPetState' has no member named 'fullness'
+  435 |     ctx.fullness  = m_petState.fullness;
+      |                                ^~~~~~~~
+ShijimaWidget.cc:436:32: error: 'struct VirtualPetState' has no member named 'affinity'
+  436 |     ctx.affinity  = m_petState.affinity;
+      |                                ^~~~~~~~
+ShijimaWidget.cc:437:32: error: 'struct VirtualPetState' has no member named 'mood'
+  437 |     ctx.mood      = m_petState.mood;
+      |                                ^~~~
+ShijimaWidget.cc: In member function 'void ShijimaWidget::handleEatStep()':
+ShijimaWidget.cc:470:20: error: 'struct VirtualPetState' has no member named 'onFed'
+  470 |         m_petState.onFed();
+      |                    ^~~~~
+In file included from C:/msys64/mingw64/include/qt6/QtGui/qwindowdefs.h:8,
+                 from C:/msys64/mingw64/include/qt6/QtWidgets/qwidget.h:9,
+                 from C:/msys64/mingw64/include/qt6/QtWidgets/QWidget:1,
+                 from ShijimaWidget.hpp:21:
+C:/msys64/mingw64/include/qt6/QtCore/qobjectdefs.h: In instantiation of 'TgtType QtPrivate::qobject_cast_helper(SrcType*) [with TgtType = ShijimaManager*; SrcType = QObject]':
+C:/msys64/mingw64/include/qt6/QtCore/qobject.h:426:45:   required from 'T qobject_cast(QObject*) [with T = ShijimaManager*]'
+  426 |     return QtPrivate::qobject_cast_helper<T>(object);
+      |            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~
+ShijimaWidget.cc:109:45:   required from here
+  109 |     auto mgr = qobject_cast<ShijimaManager*>(window());
+      |                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~
+C:/msys64/mingw64/include/qt6/QtCore/qobjectdefs.h:748:51: error: static assertion failed: qobject_cast requires the type to have a Q_OBJECT macro
+  748 |         static_assert(HasQ_OBJECT_Macro<ObjType>::Value,
+      |                                                   ^~~~~
+C:/msys64/mingw64/include/qt6/QtCore/qobjectdefs.h:748:51: note: 'QtPrivate::HasQ_OBJECT_Macro<ShijimaManager>::Value' evaluates to false
+make: *** [common.mk:163: ShijimaWidget.o] Error 1
+make: *** Waiting for unfinished jobs....
+ShijimaManager.cc: In member function 'void ShijimaManager::buildToolbar()':
+ShijimaManager.cc:343:57: warning: capture of variable 'key' with non-automatic storage duration
+  343 |             connect(action, &QAction::triggered, [this, key](bool checked){
+      |                                                         ^~~
+ShijimaManager.cc:334:34: note: 'const QString key' declared here
+  334 |             static const QString key = "multiplicationEnabled";
+      |                                  ^~~
+ShijimaManager.cc: At global scope:
+ShijimaManager.cc:592:5: error: expected unqualified-id before 'catch'
+  592 |     catch (std::exception &ex) {
+      |     ^~~~~
+ShijimaManager.cc:596:1: error: expected declaration before '}' token
+  596 | }
+      | ^
+ShijimaManager.cc: In constructor 'ShijimaManager::ShijimaManager(QWidget*)':
+ShijimaManager.cc:817:67: warning: 'Qt::MaximizeUsingFullscreenGeometryHint' is deprecated: Use Qt::ExpandedClientAreaHint instead [-Wdeprecated-declarations]
+  817 |     setWindowFlags((windowFlags() | Qt::CustomizeWindowHint | Qt::MaximizeUsingFullscreenGeometryHint |
+      |                                                                   ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+In file included from C:/msys64/mingw64/include/qt6/QtCore/qobjectdefs.h:12,
+                 from C:/msys64/mingw64/include/qt6/QtGui/qwindowdefs.h:8,
+                 from C:/msys64/mingw64/include/qt6/QtWidgets/qwidget.h:9,
+                 from C:/msys64/mingw64/include/qt6/QtWidgets/qmainwindow.h:9,
+                 from C:/msys64/mingw64/include/qt6/QtWidgets/QMainWindow:1,
+                 from ShijimaManager.hpp:21:
+C:/msys64/mingw64/include/qt6/QtCore/qnamespace.h:244:9: note: declared here
+  244 |         MaximizeUsingFullscreenGeometryHint Q_DECL_ENUMERATOR_DEPRECATED_X(
+      |         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+make: *** [common.mk:163: ShijimaManager.o] Error 1
+
+dkw01@Podo MINGW64 /c/Users/dkw01/Shijima-Qt
+$ cd /c/Users/dkw01/Shijima-Qt
+make CONFIG=release -j8 shijima-qt.exe
+make -C Platform
+mkdir -p libshijima/build && cd libshijima/build && cmake -DCMAKE_BUILD_TYPE=Release -DSHIJIMA_BUILD_EXAMPLES=NO ..
+make[1]: Entering directory '/c/Users/dkw01/Shijima-Qt/Platform'
+make -C Windows || { rm -f Platform.a && false; }
+-- Configuring done (0.1s)
+make[2]: Entering directory '/c/Users/dkw01/Shijima-Qt/Platform/Windows'
+-- Generating done (0.1s)
+-- Build files have been written to: /c/Users/dkw01/Shijima-Qt/libshijima/build
+cc -MMD -c -Wall -std=c++17 -O3 -flto -DNDEBUG -mwindows -msse2 -IC:/msys64/mingw64/include/qt6/QtWidgets -IC:/msys64/mingw64/include/qt6 -DQT_WIDGETS_LIB -IC:/msys64/mingw64/include/qt6/QtConcurrent -DQT_CONCURRENT_LIB -IC:/msys64/mingw64/include/qt6/QtMultimedia -DQT_MULTIMEDIA_LIB -IC:/msys64/mingw64/include/qt6/QtGui -DQT_GUI_LIB -IC:/msys64/mingw64/include/qt6/QtNetwork -DQT_NETWORK_LIB -IC:/msys64/mingw64/include/qt6/QtCore -DQT_CORE_LIB -IC:/msys64/mingw64/share/qt6/mkspecs/win32-g++ -DWIN32 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -DWIN64 -D_WIN64 -DMINGW_HAS_SECURE_API=1 -D_WIN32_WINNT=0x0A00 -DWINVER=0x0A00  -DSHIJIMA_GEMINI_ENABLED=1 -DSHIJIMA_USE_QTMULTIMEDIA=1 -Ilibshijima -Icpp-httplib  main.cc -o main.o
+make[2]: Nothing to be done for 'all'.
+make[2]: Leaving directory '/c/Users/dkw01/Shijima-Qt/Platform/Windows'
+cc -MMD -c -Wall -std=c++17 -O3 -flto -DNDEBUG -mwindows -msse2 -IC:/msys64/mingw64/include/qt6/QtWidgets -IC:/msys64/mingw64/include/qt6 -DQT_WIDGETS_LIB -IC:/msys64/mingw64/include/qt6/QtConcurrent -DQT_CONCURRENT_LIB -IC:/msys64/mingw64/include/qt6/QtMultimedia -DQT_MULTIMEDIA_LIB -IC:/msys64/mingw64/include/qt6/QtGui -DQT_GUI_LIB -IC:/msys64/mingw64/include/qt6/QtNetwork -DQT_NETWORK_LIB -IC:/msys64/mingw64/include/qt6/QtCore -DQT_CORE_LIB -IC:/msys64/mingw64/share/qt6/mkspecs/win32-g++ -DWIN32 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -DWIN64 -D_WIN64 -DMINGW_HAS_SECURE_API=1 -D_WIN32_WINNT=0x0A00 -DWINVER=0x0A00  -DSHIJIMA_GEMINI_ENABLED=1 -DSHIJIMA_USE_QTMULTIMEDIA=1 -Ilibshijima -Icpp-httplib  ShijimaContextMenu.cc -o ShijimaContextMenu.o
+cp -uv Windows/Windows.a Platform.a
+make[1]: Leaving directory '/c/Users/dkw01/Shijima-Qt/Platform'
+cc -MMD -c -Wall -std=c++17 -O3 -flto -DNDEBUG -mwindows -msse2 -IC:/msys64/mingw64/include/qt6/QtWidgets -IC:/msys64/mingw64/include/qt6 -DQT_WIDGETS_LIB -IC:/msys64/mingw64/include/qt6/QtConcurrent -DQT_CONCURRENT_LIB -IC:/msys64/mingw64/include/qt6/QtMultimedia -DQT_MULTIMEDIA_LIB -IC:/msys64/mingw64/include/qt6/QtGui -DQT_GUI_LIB -IC:/msys64/mingw64/include/qt6/QtNetwork -DQT_NETWORK_LIB -IC:/msys64/mingw64/include/qt6/QtCore -DQT_CORE_LIB -IC:/msys64/mingw64/share/qt6/mkspecs/win32-g++ -DWIN32 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -DWIN64 -D_WIN64 -DMINGW_HAS_SECURE_API=1 -D_WIN32_WINNT=0x0A00 -DWINVER=0x0A00  -DSHIJIMA_GEMINI_ENABLED=1 -DSHIJIMA_USE_QTMULTIMEDIA=1 -Ilibshijima -Icpp-httplib  ShijimaManager.cc -o ShijimaManager.o
+In file included from Platform/ActiveWindow.hpp:21,
+                 from Platform/Platform.hpp:21,
+                 from main.cc:24:
+C:/msys64/mingw64/include/c++/15.2.0/cstdbool:50:6: warning: #warning "<cstdbool> is deprecated in C++17, remove the #include" [-Wcpp]
+   50 | #    warning "<cstdbool> is deprecated in C++17, remove the #include"
+      |      ^~~~~~~
+cc -MMD -c -Wall -std=c++17 -O3 -flto -DNDEBUG -mwindows -msse2 -IC:/msys64/mingw64/include/qt6/QtWidgets -IC:/msys64/mingw64/include/qt6 -DQT_WIDGETS_LIB -IC:/msys64/mingw64/include/qt6/QtConcurrent -DQT_CONCURRENT_LIB -IC:/msys64/mingw64/include/qt6/QtMultimedia -DQT_MULTIMEDIA_LIB -IC:/msys64/mingw64/include/qt6/QtGui -DQT_GUI_LIB -IC:/msys64/mingw64/include/qt6/QtNetwork -DQT_NETWORK_LIB -IC:/msys64/mingw64/include/qt6/QtCore -DQT_CORE_LIB -IC:/msys64/mingw64/share/qt6/mkspecs/win32-g++ -DWIN32 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -DWIN64 -D_WIN64 -DMINGW_HAS_SECURE_API=1 -D_WIN32_WINNT=0x0A00 -DWINVER=0x0A00  -DSHIJIMA_GEMINI_ENABLED=1 -DSHIJIMA_USE_QTMULTIMEDIA=1 -Ilibshijima -Icpp-httplib  ShijimaWidget.cc -o ShijimaWidget.o
+In file included from Platform/ActiveWindow.hpp:21,
+                 from Platform/Platform.hpp:21,
+                 from PlatformWidget.hpp:25,
+                 from ShijimaWidget.hpp:30,
+                 from ShijimaContextMenu.hpp:22,
+                 from ShijimaContextMenu.cc:19:
+C:/msys64/mingw64/include/c++/15.2.0/cstdbool:50:6: warning: #warning "<cstdbool> is deprecated in C++17, remove the #include" [-Wcpp]
+   50 | #    warning "<cstdbool> is deprecated in C++17, remove the #include"
+      |      ^~~~~~~
+cc -MMD -c -Wall -std=c++17 -O3 -flto -DNDEBUG -mwindows -msse2 -IC:/msys64/mingw64/include/qt6/QtWidgets -IC:/msys64/mingw64/include/qt6 -DQT_WIDGETS_LIB -IC:/msys64/mingw64/include/qt6/QtConcurrent -DQT_CONCURRENT_LIB -IC:/msys64/mingw64/include/qt6/QtMultimedia -DQT_MULTIMEDIA_LIB -IC:/msys64/mingw64/include/qt6/QtGui -DQT_GUI_LIB -IC:/msys64/mingw64/include/qt6/QtNetwork -DQT_NETWORK_LIB -IC:/msys64/mingw64/include/qt6/QtCore -DQT_CORE_LIB -IC:/msys64/mingw64/share/qt6/mkspecs/win32-g++ -DWIN32 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -DWIN64 -D_WIN64 -DMINGW_HAS_SECURE_API=1 -D_WIN32_WINNT=0x0A00 -DWINVER=0x0A00  -DSHIJIMA_GEMINI_ENABLED=1 -DSHIJIMA_USE_QTMULTIMEDIA=1 -Ilibshijima -Icpp-httplib  ShijimaHttpApi.cc -o ShijimaHttpApi.o
+make -C libshijima/build
+In file included from Platform/ActiveWindow.hpp:21,
+                 from Platform/Platform.hpp:21,
+                 from PlatformWidget.hpp:25,
+                 from ShijimaManager.hpp:31,
+                 from ShijimaManager.cc:19:
+C:/msys64/mingw64/include/c++/15.2.0/cstdbool:50:6: warning: #warning "<cstdbool> is deprecated in C++17, remove the #include" [-Wcpp]
+   50 | #    warning "<cstdbool> is deprecated in C++17, remove the #include"
+      |      ^~~~~~~
+make[1]: Entering directory '/c/Users/dkw01/Shijima-Qt/libshijima/build'
+In file included from Platform/ActiveWindow.hpp:21,
+                 from Platform/Platform.hpp:21,
+                 from PlatformWidget.hpp:25,
+                 from ShijimaWidget.hpp:30,
+                 from ShijimaWidget.cc:19:
+C:/msys64/mingw64/include/c++/15.2.0/cstdbool:50:6: warning: #warning "<cstdbool> is deprecated in C++17, remove the #include" [-Wcpp]
+   50 | #    warning "<cstdbool> is deprecated in C++17, remove the #include"
+      |      ^~~~~~~
+[100%] Built target shijima
+make[1]: Leaving directory '/c/Users/dkw01/Shijima-Qt/libshijima/build'
+In file included from Platform/ActiveWindow.hpp:21,
+                 from Platform/Platform.hpp:21,
+                 from PlatformWidget.hpp:25,
+                 from ShijimaManager.hpp:31,
+                 from ShijimaHttpApi.cc:21:
+C:/msys64/mingw64/include/c++/15.2.0/cstdbool:50:6: warning: #warning "<cstdbool> is deprecated in C++17, remove the #include" [-Wcpp]
+   50 | #    warning "<cstdbool> is deprecated in C++17, remove the #include"
+      |      ^~~~~~~
+In file included from ShijimaContextMenu.cc:21:
+ShijimaManager.hpp:47:1: error: expected class-name before '{' token
+   47 | {
+      | ^
+ShijimaManager.hpp:83:14: error: 'ShijimaManager::ShijimaManager(QWidget*)' cannot be overloaded with 'ShijimaManager::ShijimaManager(QWidget*)'
+   83 |     explicit ShijimaManager(QWidget *parent = nullptr);
+      |              ^~~~~~~~~~~~~~
+ShijimaManager.hpp:51:14: note: previous declaration 'ShijimaManager::ShijimaManager(QWidget*)'
+   51 |     explicit ShijimaManager(QWidget *parent = nullptr);
+      |              ^~~~~~~~~~~~~~
+ShijimaManager.hpp:74:10: error: 'void ShijimaManager::timerEvent(QTimerEvent*)' marked 'override', but does not override
+   74 |     void timerEvent(QTimerEvent *event) override;
+      |          ^~~~~~~~~~
+ShijimaManager.hpp:75:10: error: 'void ShijimaManager::showEvent(QShowEvent*)' marked 'override', but does not override
+   75 |     void showEvent(QShowEvent *event) override;
+      |          ^~~~~~~~~
+ShijimaManager.hpp:76:10: error: 'void ShijimaManager::closeEvent(QCloseEvent*)' marked 'override', but does not override
+   76 |     void closeEvent(QCloseEvent *) override;
+      |          ^~~~~~~~~~
+ShijimaManager.hpp:77:10: error: 'bool ShijimaManager::eventFilter(QObject*, QEvent*)' marked 'override', but does not override
+   77 |     bool eventFilter(QObject *obj, QEvent *event) override;
+      |          ^~~~~~~~~~~
+ShijimaManager.hpp:78:10: error: 'void ShijimaManager::dragEnterEvent(QDragEnterEvent*)' marked 'override', but does not override
+   78 |     void dragEnterEvent(QDragEnterEvent *event) override;
+      |          ^~~~~~~~~~~~~~
+ShijimaManager.hpp:79:10: error: 'void ShijimaManager::dropEvent(QDropEvent*)' marked 'override', but does not override
+   79 |     void dropEvent(QDropEvent *event) override;
+      |          ^~~~~~~~~
+make: *** [common.mk:163: ShijimaContextMenu.o] Error 1
+make: *** Waiting for unfinished jobs....
+In file included from main.cc:25:
+ShijimaManager.hpp:47:1: error: expected class-name before '{' token
+   47 | {
+      | ^
+ShijimaManager.hpp:83:14: error: 'ShijimaManager::ShijimaManager(QWidget*)' cannot be overloaded with 'ShijimaManager::ShijimaManager(QWidget*)'
+   83 |     explicit ShijimaManager(QWidget *parent = nullptr);
+      |              ^~~~~~~~~~~~~~
+ShijimaManager.hpp:51:14: note: previous declaration 'ShijimaManager::ShijimaManager(QWidget*)'
+   51 |     explicit ShijimaManager(QWidget *parent = nullptr);
+      |              ^~~~~~~~~~~~~~
+ShijimaManager.hpp:47:1: error: expected class-name before '{' token
+   47 | {
+      | ^
+ShijimaManager.hpp:83:14: error: 'ShijimaManager::ShijimaManager(QWidget*)' cannot be overloaded with 'ShijimaManager::ShijimaManager(QWidget*)'
+   83 |     explicit ShijimaManager(QWidget *parent = nullptr);
+      |              ^~~~~~~~~~~~~~
+ShijimaManager.hpp:51:14: note: previous declaration 'ShijimaManager::ShijimaManager(QWidget*)'
+   51 |     explicit ShijimaManager(QWidget *parent = nullptr);
+      |              ^~~~~~~~~~~~~~
+ShijimaManager.hpp:74:10: error: 'void ShijimaManager::timerEvent(QTimerEvent*)' marked 'override', but does not override
+   74 |     void timerEvent(QTimerEvent *event) override;
+      |          ^~~~~~~~~~
+ShijimaManager.hpp:75:10: error: 'void ShijimaManager::showEvent(QShowEvent*)' marked 'override', but does not override
+   75 |     void showEvent(QShowEvent *event) override;
+      |          ^~~~~~~~~
+ShijimaManager.hpp:76:10: error: 'void ShijimaManager::closeEvent(QCloseEvent*)' marked 'override', but does not override
+   76 |     void closeEvent(QCloseEvent *) override;
+      |          ^~~~~~~~~~
+ShijimaManager.hpp:77:10: error: 'bool ShijimaManager::eventFilter(QObject*, QEvent*)' marked 'override', but does not override
+   77 |     bool eventFilter(QObject *obj, QEvent *event) override;
+      |          ^~~~~~~~~~~
+ShijimaManager.hpp:78:10: error: 'void ShijimaManager::dragEnterEvent(QDragEnterEvent*)' marked 'override', but does not override
+   78 |     void dragEnterEvent(QDragEnterEvent *event) override;
+      |          ^~~~~~~~~~~~~~
+ShijimaManager.hpp:79:10: error: 'void ShijimaManager::dropEvent(QDropEvent*)' marked 'override', but does not override
+   79 |     void dropEvent(QDropEvent *event) override;
+      |          ^~~~~~~~~
+ShijimaManager.hpp:74:10: error: 'void ShijimaManager::timerEvent(QTimerEvent*)' marked 'override', but does not override
+   74 |     void timerEvent(QTimerEvent *event) override;
+      |          ^~~~~~~~~~
+ShijimaManager.hpp:75:10: error: 'void ShijimaManager::showEvent(QShowEvent*)' marked 'override', but does not override
+   75 |     void showEvent(QShowEvent *event) override;
+      |          ^~~~~~~~~
+ShijimaManager.hpp:76:10: error: 'void ShijimaManager::closeEvent(QCloseEvent*)' marked 'override', but does not override
+   76 |     void closeEvent(QCloseEvent *) override;
+      |          ^~~~~~~~~~
+ShijimaManager.hpp:77:10: error: 'bool ShijimaManager::eventFilter(QObject*, QEvent*)' marked 'override', but does not override
+   77 |     bool eventFilter(QObject *obj, QEvent *event) override;
+      |          ^~~~~~~~~~~
+ShijimaManager.hpp:78:10: error: 'void ShijimaManager::dragEnterEvent(QDragEnterEvent*)' marked 'override', but does not override
+   78 |     void dragEnterEvent(QDragEnterEvent *event) override;
+      |          ^~~~~~~~~~~~~~
+ShijimaManager.hpp:79:10: error: 'void ShijimaManager::dropEvent(QDropEvent*)' marked 'override', but does not override
+   79 |     void dropEvent(QDropEvent *event) override;
+      |          ^~~~~~~~~
+In file included from ShijimaWidget.cc:40:
+ShijimaManager.hpp:47:1: error: expected class-name before '{' token
+   47 | {
+      | ^
+ShijimaManager.hpp:83:14: error: 'ShijimaManager::ShijimaManager(QWidget*)' cannot be overloaded with 'ShijimaManager::ShijimaManager(QWidget*)'
+   83 |     explicit ShijimaManager(QWidget *parent = nullptr);
+      |              ^~~~~~~~~~~~~~
+ShijimaManager.hpp:51:14: note: previous declaration 'ShijimaManager::ShijimaManager(QWidget*)'
+   51 |     explicit ShijimaManager(QWidget *parent = nullptr);
+      |              ^~~~~~~~~~~~~~
+ShijimaManager.hpp:74:10: error: 'void ShijimaManager::timerEvent(QTimerEvent*)' marked 'override', but does not override
+   74 |     void timerEvent(QTimerEvent *event) override;
+      |          ^~~~~~~~~~
+ShijimaManager.hpp:75:10: error: 'void ShijimaManager::showEvent(QShowEvent*)' marked 'override', but does not override
+   75 |     void showEvent(QShowEvent *event) override;
+      |          ^~~~~~~~~
+ShijimaManager.hpp:76:10: error: 'void ShijimaManager::closeEvent(QCloseEvent*)' marked 'override', but does not override
+   76 |     void closeEvent(QCloseEvent *) override;
+      |          ^~~~~~~~~~
+ShijimaManager.hpp:77:10: error: 'bool ShijimaManager::eventFilter(QObject*, QEvent*)' marked 'override', but does not override
+   77 |     bool eventFilter(QObject *obj, QEvent *event) override;
+      |          ^~~~~~~~~~~
+ShijimaManager.hpp:78:10: error: 'void ShijimaManager::dragEnterEvent(QDragEnterEvent*)' marked 'override', but does not override
+   78 |     void dragEnterEvent(QDragEnterEvent *event) override;
+      |          ^~~~~~~~~~~~~~
+ShijimaManager.hpp:79:10: error: 'void ShijimaManager::dropEvent(QDropEvent*)' marked 'override', but does not override
+   79 |     void dropEvent(QDropEvent *event) override;
+      |          ^~~~~~~~~
+ShijimaWidget.cc: In member function 'void ShijimaWidget::tick()':
+ShijimaWidget.cc:298:16: error: 'struct VirtualPetState' has no member named 'onTick'
+  298 |     m_petState.onTick(1000 / 25);
+      |                ^~~~~~
+ShijimaWidget.cc: In member function 'void ShijimaWidget::feed()':
+ShijimaWidget.cc:453:32: error: 'struct VirtualPetState' has no member named 'fullness'
+  453 |     ctx.fullness  = m_petState.fullness;
+      |                                ^~~~~~~~
+ShijimaWidget.cc:454:32: error: 'struct VirtualPetState' has no member named 'affinity'
+  454 |     ctx.affinity  = m_petState.affinity;
+      |                                ^~~~~~~~
+ShijimaWidget.cc:455:32: error: 'struct VirtualPetState' has no member named 'mood'
+  455 |     ctx.mood      = m_petState.mood;
+      |                                ^~~~
+ShijimaWidget.cc: In member function 'void ShijimaWidget::handleEatStep()':
+ShijimaWidget.cc:488:20: error: 'struct VirtualPetState' has no member named 'onFed'
+  488 |         m_petState.onFed();
+      |                    ^~~~~
+make: *** [common.mk:163: ShijimaWidget.o] Error 1
+main.cc: In function 'int main(int, char**)':
+main.cc:49:43: error: 'class ShijimaManager' has no member named 'show'
+   49 |         ShijimaManager::defaultManager()->show();
+      |                                           ^~~~
+ShijimaManager.hpp:47:1: error: expected class-name before '{' token
+   47 | {
+      | ^
+ShijimaManager.hpp:83:14: error: 'ShijimaManager::ShijimaManager(QWidget*)' cannot be overloaded with 'ShijimaManager::ShijimaManager(QWidget*)'
+   83 |     explicit ShijimaManager(QWidget *parent = nullptr);
+      |              ^~~~~~~~~~~~~~
+ShijimaManager.hpp:51:14: note: previous declaration 'ShijimaManager::ShijimaManager(QWidget*)'
+   51 |     explicit ShijimaManager(QWidget *parent = nullptr);
+      |              ^~~~~~~~~~~~~~
+ShijimaManager.hpp:74:10: error: 'void ShijimaManager::timerEvent(QTimerEvent*)' marked 'override', but does not override
+   74 |     void timerEvent(QTimerEvent *event) override;
+      |          ^~~~~~~~~~
+ShijimaManager.hpp:75:10: error: 'void ShijimaManager::showEvent(QShowEvent*)' marked 'override', but does not override
+   75 |     void showEvent(QShowEvent *event) override;
+      |          ^~~~~~~~~
+ShijimaManager.hpp:76:10: error: 'void ShijimaManager::closeEvent(QCloseEvent*)' marked 'override', but does not override
+   76 |     void closeEvent(QCloseEvent *) override;
+      |          ^~~~~~~~~~
+ShijimaManager.hpp:77:10: error: 'bool ShijimaManager::eventFilter(QObject*, QEvent*)' marked 'override', but does not override
+   77 |     bool eventFilter(QObject *obj, QEvent *event) override;
+      |          ^~~~~~~~~~~
+ShijimaManager.hpp:78:10: error: 'void ShijimaManager::dragEnterEvent(QDragEnterEvent*)' marked 'override', but does not override
+   78 |     void dragEnterEvent(QDragEnterEvent *event) override;
+      |          ^~~~~~~~~~~~~~
+ShijimaManager.hpp:79:10: error: 'void ShijimaManager::dropEvent(QDropEvent*)' marked 'override', but does not override
+   79 |     void dropEvent(QDropEvent *event) override;
+      |          ^~~~~~~~~
+ShijimaManager.cc: In static member function 'static void ShijimaManager::finalize()':
+ShijimaManager.cc:111:9: warning: deleting object of polymorphic class type 'ShijimaManager' which has non-virtual destructor might cause undefined behavior [-Wdelete-non-virtual-dtor]
+  111 |         delete m_defaultManager;
+      |         ^~~~~~~~~~~~~~~~~~~~~~~
+ShijimaManager.cc: In member function 'void ShijimaManager::importAction()':
+ShijimaManager.cc:226:48: error: cannot convert 'ShijimaManager*' to 'QWidget*'
+  226 |     auto paths = QFileDialog::getOpenFileNames(this, "Choose shimeji archive...");
+      |                                                ^~~~
+      |                                                |
+      |                                                ShijimaManager*
+In file included from C:/msys64/mingw64/include/qt6/QtWidgets/QFileDialog:1,
+                 from ShijimaManager.cc:31:
+C:/msys64/mingw64/include/qt6/QtWidgets/qfiledialog.h:201:50: note: initializing argument 1 of 'static QStringList QFileDialog::getOpenFileNames(QWidget*, const QString&, const QString&, const QString&, QString*, Options)'
+  201 |     static QStringList getOpenFileNames(QWidget *parent = nullptr,
+      |                                         ~~~~~~~~~^~~~~~~~~~~~~~~~
+ShijimaManager.cc: In member function 'void ShijimaManager::quitAction()':
+ShijimaManager.cc:235:5: error: 'close' was not declared in this scope; did you mean 'fclose'?
+  235 |     close();
+      |     ^~~~~
+      |     fclose
+ShijimaManager.cc: In member function 'void ShijimaManager::deleteAction()':
+ShijimaManager.cc:259:31: error: no matching function for call to 'QMessageBox::QMessageBox(<brace-enclosed initializer list>)'
+  259 |     QMessageBox msgBox { this };
+      |                               ^
+ShijimaManager.cc:259:31: note: there are 3 candidates
+In file included from C:/msys64/mingw64/include/qt6/QtWidgets/QMessageBox:1,
+                 from ShijimaManager.cc:25:
+C:/msys64/mingw64/include/qt6/QtWidgets/qmessagebox.h:215:5: note: candidate 1: 'QMessageBox::QMessageBox(const QString&, const QString&, Icon, int, int, int, QWidget*, Qt::WindowFlags)'
+  215 |     QMessageBox(const QString &title, const QString &text, Icon icon,
+      |     ^~~~~~~~~~~
+C:/msys64/mingw64/include/qt6/QtWidgets/qmessagebox.h:215:5: note: candidate expects 8 arguments, 1 provided
+C:/msys64/mingw64/include/qt6/QtWidgets/qmessagebox.h:115:5: note: candidate 2: 'QMessageBox::QMessageBox(Icon, const QString&, const QString&, StandardButtons, QWidget*, Qt::WindowFlags)'
+  115 |     QMessageBox(Icon icon, const QString &title, const QString &text,
+      |     ^~~~~~~~~~~
+C:/msys64/mingw64/include/qt6/QtWidgets/qmessagebox.h:115:5: note: candidate expects 6 arguments, 1 provided
+C:/msys64/mingw64/include/qt6/QtWidgets/qmessagebox.h:114:14: note: candidate 3: 'QMessageBox::QMessageBox(QWidget*)'
+  114 |     explicit QMessageBox(QWidget *parent = nullptr);
+      |              ^~~~~~~~~~~
+C:/msys64/mingw64/include/qt6/QtWidgets/qmessagebox.h:114:35: note: no known conversion for argument 1 from 'ShijimaManager*' to 'QWidget*'
+  114 |     explicit QMessageBox(QWidget *parent = nullptr);
+      |                          ~~~~~~~~~^~~~~~~~~~~~~~~~
+ShijimaManager.cc: In member function 'void ShijimaManager::buildToolbar()':
+ShijimaManager.cc:309:12: error: 'menuBar' was not declared in this scope; did you mean 'QMenuBar'?
+  309 |     menu = menuBar()->addMenu("File");
+      |            ^~~~~~~
+      |            QMenuBar
+ShijimaManager.cc:312:9: error: 'connect' was not declared in this scope; did you mean 'QtFuture::connect'?
+  312 |         connect(action, &QAction::triggered, this, &ShijimaManager::importAction);
+      |         ^~~~~~~
+      |         QtFuture::connect
+In file included from C:/msys64/mingw64/include/qt6/QtCore/qfuture.h:14,
+                 from C:/msys64/mingw64/include/qt6/QtCore/QtCore:116,
+                 from C:/msys64/mingw64/include/qt6/QtConcurrent/QtConcurrentDepends:3,
+                 from C:/msys64/mingw64/include/qt6/QtConcurrent/QtConcurrent:3,
+                 from ShijimaManager.cc:59:
+C:/msys64/mingw64/include/qt6/QtCore/qfuture_impl.h:908:34: note: 'QtFuture::connect' declared here
+  908 | static QFuture<ArgsType<Signal>> connect(Sender *sender, Signal signal)
+      |                                  ^~~~~~~
+ShijimaManager.cc:327:9: error: 'connect' was not declared in this scope; did you mean 'QtFuture::connect'?
+  327 |         connect(action, &QAction::triggered, this, &ShijimaManager::deleteAction);
+      |         ^~~~~~~
+      |         QtFuture::connect
+C:/msys64/mingw64/include/qt6/QtCore/qfuture_impl.h:908:34: note: 'QtFuture::connect' declared here
+  908 | static QFuture<ArgsType<Signal>> connect(Sender *sender, Signal signal)
+      |                                  ^~~~~~~
+ShijimaManager.cc:343:57: warning: capture of variable 'key' with non-automatic storage duration
+  343 |             connect(action, &QAction::triggered, [this, key](bool checked){
+      |                                                         ^~~
+ShijimaManager.cc:334:34: note: 'const QString key' declared here
+  334 |             static const QString key = "multiplicationEnabled";
+      |                                  ^~~
+ShijimaManager.cc:343:13: error: 'connect' was not declared in this scope; did you mean 'QtFuture::connect'?
+  343 |             connect(action, &QAction::triggered, [this, key](bool checked){
+      |             ^~~~~~~
+      |             QtFuture::connect
+C:/msys64/mingw64/include/qt6/QtCore/qfuture_impl.h:908:34: note: 'QtFuture::connect' declared here
+  908 | static QFuture<ArgsType<Signal>> connect(Sender *sender, Signal signal)
+      |                                  ^~~~~~~
+ShijimaManager.cc: In lambda function:
+ShijimaManager.cc:360:21: error: cannot convert 'ShijimaManager*' to 'QWidget*'
+  360 |                     this,
+      |                     ^~~~
+      |                     |
+      |                     ShijimaManager*
+In file included from C:/msys64/mingw64/include/qt6/QtWidgets/QInputDialog:1,
+                 from ShijimaManager.cc:24:
+C:/msys64/mingw64/include/qt6/QtWidgets/qinputdialog.h:126:37: note: initializing argument 1 of 'static QString QInputDialog::getText(QWidget*, const QString&, const QString&, QLineEdit::EchoMode, const QString&, bool*, Qt::WindowFlags, Qt::InputMethodHints)'
+  126 |     static QString getText(QWidget *parent, const QString &title, const QString &label,
+      |                            ~~~~~~~~~^~~~~~
+ShijimaManager.cc:370:45: error: no matching function for call to 'QMessageBox::information(ShijimaManager*, const char [6], const char [31])'
+  370 |                     QMessageBox::information(
+      |                     ~~~~~~~~~~~~~~~~~~~~~~~~^
+  371 |                         this,
+      |                         ~~~~~
+  372 |                         "Saved",
+      |                         ~~~~~~~~
+  373 |                         "Gemini API Key has been saved."
+      |                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  374 |                     );
+      |                     ~
+ShijimaManager.cc:370:45: note: there are 4 candidates
+C:/msys64/mingw64/include/qt6/QtWidgets/qmessagebox.h:169:27: note: candidate 1: 'static QMessageBox::StandardButton QMessageBox::information(QWidget*, const QString&, const QString&, StandardButtons, StandardButton)'
+  169 |     static StandardButton information(QWidget *parent, const QString &title,
+      |                           ^~~~~~~~~~~
+C:/msys64/mingw64/include/qt6/QtWidgets/qmessagebox.h:169:48: note: no known conversion for argument 1 from 'ShijimaManager*' to 'QWidget*'
+  169 |     static StandardButton information(QWidget *parent, const QString &title,
+      |                                       ~~~~~~~~~^~~~~~
+C:/msys64/mingw64/include/qt6/QtWidgets/qmessagebox.h:173:34: note: candidate 2: 'static QMessageBox::StandardButton QMessageBox::information(QWidget*, const QString&, const QString&, StandardButton, StandardButton)'
+  173 |     inline static StandardButton information(QWidget *parent, const QString &title,
+      |                                  ^~~~~~~~~~~
+C:/msys64/mingw64/include/qt6/QtWidgets/qmessagebox.h:173:34: note: candidate expects 5 arguments, 3 provided
+C:/msys64/mingw64/include/qt6/QtWidgets/qmessagebox.h:221:16: note: candidate 3: 'static int QMessageBox::information(QWidget*, const QString&, const QString&, int, int, int)'
+  221 |     static int information(QWidget *parent, const QString &title,
+      |                ^~~~~~~~~~~
+C:/msys64/mingw64/include/qt6/QtWidgets/qmessagebox.h:221:16: note: candidate expects 6 arguments, 3 provided
+C:/msys64/mingw64/include/qt6/QtWidgets/qmessagebox.h:225:16: note: candidate 4: 'static int QMessageBox::information(QWidget*, const QString&, const QString&, const QString&, const QString&, const QString&, int, int)'
+  225 |     static int information(QWidget *parent, const QString &title,
+      |                ^~~~~~~~~~~
+C:/msys64/mingw64/include/qt6/QtWidgets/qmessagebox.h:225:16: note: candidate expects 8 arguments, 3 provided
+ShijimaManager.cc: In member function 'void ShijimaManager::buildToolbar()':
+ShijimaManager.cc:354:13: error: 'connect' was not declared in this scope; did you mean 'QtFuture::connect'?
+  354 |             connect(geminiAction, &QAction::triggered, [this]() {
+      |             ^~~~~~~
+      |             QtFuture::connect
+C:/msys64/mingw64/include/qt6/QtCore/qfuture_impl.h:908:34: note: 'QtFuture::connect' declared here
+  908 | static QFuture<ArgsType<Signal>> connect(Sender *sender, Signal signal)
+      |                                  ^~~~~~~
+ShijimaManager.cc:384:13: error: 'connect' was not declared in this scope; did you mean 'QtFuture::connect'?
+  384 |             connect(action, &QAction::triggered, [this](bool checked){
+      |             ^~~~~~~
+      |             QtFuture::connect
+C:/msys64/mingw64/include/qt6/QtCore/qfuture_impl.h:908:34: note: 'QtFuture::connect' declared here
+  908 | static QFuture<ArgsType<Signal>> connect(Sender *sender, Signal signal)
+      |                                  ^~~~~~~
+ShijimaManager.cc: In lambda function:
+ShijimaManager.cc:398:39: error: invalid user-defined conversion from 'ShijimaManager*' to 'const QColor&' [-fpermissive]
+  398 |                 QColorDialog dialog { this };
+      |                                       ^~~~
+In file included from C:/msys64/mingw64/include/qt6/QtGui/qpixmap.h:9,
+                 from C:/msys64/mingw64/include/qt6/QtGui/qicon.h:10,
+                 from C:/msys64/mingw64/include/qt6/QtGui/qaction.h:11,
+                 from C:/msys64/mingw64/include/qt6/QtWidgets/qwidget.h:13,
+                 from C:/msys64/mingw64/include/qt6/QtWidgets/qmainwindow.h:9,
+                 from C:/msys64/mingw64/include/qt6/QtWidgets/QMainWindow:1,
+                 from ShijimaManager.hpp:21:
+C:/msys64/mingw64/include/qt6/QtGui/qcolor.h:48:5: note: candidate is: 'QColor::QColor(QRgb)' (near match)
+   48 |     QColor(QRgb rgb) noexcept;
+      |     ^~~~~~
+C:/msys64/mingw64/include/qt6/QtGui/qcolor.h:48:5: note: conversion of argument 1 would be ill-formed:
+ShijimaManager.cc:398:39: error: invalid conversion from 'ShijimaManager*' to 'QRgb' {aka 'unsigned int'} [-fpermissive]
+  398 |                 QColorDialog dialog { this };
+      |                                       ^~~~
+      |                                       |
+      |                                       ShijimaManager*
+ShijimaManager.cc:398:39: error: invalid conversion from 'ShijimaManager*' to 'QRgb' {aka 'unsigned int'} [-fpermissive]
+  398 |                 QColorDialog dialog { this };
+      |                                       ^~~~
+      |                                       |
+      |                                       ShijimaManager*
+C:/msys64/mingw64/include/qt6/QtGui/qcolor.h:48:17: note: initializing argument 1 of 'QColor::QColo(QRgb)'
+   48 |     QColor(QRgb rgb) noexcept;
+      |            ~~~~~^~~
+In file included from C:/msys64/mingw64/include/qt6/QtWidgets/QColorDialog:1,
+                 from ShijimaManager.cc:63:
+C:/msys64/mingw64/include/qt6/QtWidgets/qcolordialog.h:38:41: note: initializing argument 1 of 'QColorDialog::QColorDialog(const QColor&, QWidget*)'
+   38 |     explicit QColorDialog(const QColor &initial, QWidget *parent = nullptr);
+      |                           ~~~~~~~~~~~~~~^~~~~~~
+ShijimaManager.cc: In member function 'void ShijimaManager::buildToolbar()':
+ShijimaManager.cc:397:13: error: 'connect' was not declared in this scope; did you mean 'QtFuture::connect'?
+  397 |             connect(action, &QAction::triggered, [this](){
+      |             ^~~~~~~
+      |             QtFuture::connect
+C:/msys64/mingw64/include/qt6/QtCore/qfuture_impl.h:908:34: note: 'QtFuture::connect' declared here
+  908 | static QFuture<ArgsType<Signal>> connect(Sender *sender, Signal signal)
+      |                                  ^~~~~~~
+ShijimaManager.cc:428:17: error: 'connect' was not declared in this scope; did you mean 'QtFuture::connect'?
+  428 |                 connect(action, &QAction::triggered, [this, customAction, \
+      |                 ^~~~~~~
+ShijimaManager.cc:441:13: note: in expansion of macro 'addPreset'
+  441 |             addPreset(0.25);
+      |             ^~~~~~~~~
+C:/msys64/mingw64/include/qt6/QtCore/qfuture_impl.h:908:34: note: 'QtFuture::connect' declared here
+  908 | static QFuture<ArgsType<Signal>> connect(Sender *sender, Signal signal)
+      |                                  ^~~~~~~
+ShijimaManager.cc:428:17: error: 'connect' was not declared in this scope; did you mean 'QtFuture::connect'?
+  428 |                 connect(action, &QAction::triggered, [this, customAction, \
+      |                 ^~~~~~~
+ShijimaManager.cc:442:13: note: in expansion of macro 'addPreset'
+  442 |             addPreset(0.50);
+      |             ^~~~~~~~~
+C:/msys64/mingw64/include/qt6/QtCore/qfuture_impl.h:908:34: note: 'QtFuture::connect' declared here
+  908 | static QFuture<ArgsType<Signal>> connect(Sender *sender, Signal signal)
+      |                                  ^~~~~~~
+ShijimaManager.cc:428:17: error: 'connect' was not declared in this scope; did you mean 'QtFuture::connect'?
+  428 |                 connect(action, &QAction::triggered, [this, customAction, \
+      |                 ^~~~~~~
+ShijimaManager.cc:443:13: note: in expansion of macro 'addPreset'
+  443 |             addPreset(0.75);
+      |             ^~~~~~~~~
+C:/msys64/mingw64/include/qt6/QtCore/qfuture_impl.h:908:34: note: 'QtFuture::connect' declared here
+  908 | static QFuture<ArgsType<Signal>> connect(Sender *sender, Signal signal)
+      |                                  ^~~~~~~
+ShijimaManager.cc:428:17: error: 'connect' was not declared in this scope; did you mean 'QtFuture::connect'?
+  428 |                 connect(action, &QAction::triggered, [this, customAction, \
+      |                 ^~~~~~~
+ShijimaManager.cc:444:13: note: in expansion of macro 'addPreset'
+  444 |             addPreset(1.00);
+      |             ^~~~~~~~~
+C:/msys64/mingw64/include/qt6/QtCore/qfuture_impl.h:908:34: note: 'QtFuture::connect' declared here
+  908 | static QFuture<ArgsType<Signal>> connect(Sender *sender, Signal signal)
+      |                                  ^~~~~~~
+ShijimaManager.cc:428:17: error: 'connect' was not declared in this scope; did you mean 'QtFuture::connect'?
+  428 |                 connect(action, &QAction::triggered, [this, customAction, \
+      |                 ^~~~~~~
+ShijimaManager.cc:445:13: note: in expansion of macro 'addPreset'
+  445 |             addPreset(1.25);
+      |             ^~~~~~~~~
+C:/msys64/mingw64/include/qt6/QtCore/qfuture_impl.h:908:34: note: 'QtFuture::connect' declared here
+  908 | static QFuture<ArgsType<Signal>> connect(Sender *sender, Signal signal)
+      |                                  ^~~~~~~
+ShijimaManager.cc:428:17: error: 'connect' was not declared in this scope; did you mean 'QtFuture::connect'?
+  428 |                 connect(action, &QAction::triggered, [this, customAction, \
+      |                 ^~~~~~~
+ShijimaManager.cc:446:13: note: in expansion of macro 'addPreset'
+  446 |             addPreset(1.50);
+      |             ^~~~~~~~~
+C:/msys64/mingw64/include/qt6/QtCore/qfuture_impl.h:908:34: note: 'QtFuture::connect' declared here
+  908 | static QFuture<ArgsType<Signal>> connect(Sender *sender, Signal signal)
+      |                                  ^~~~~~~
+ShijimaManager.cc:428:17: error: 'connect' was not declared in this scope; did you mean 'QtFuture::connect'?
+  428 |                 connect(action, &QAction::triggered, [this, customAction, \
+      |                 ^~~~~~~
+ShijimaManager.cc:447:13: note: in expansion of macro 'addPreset'
+  447 |             addPreset(1.75);
+      |             ^~~~~~~~~
+C:/msys64/mingw64/include/qt6/QtCore/qfuture_impl.h:908:34: note: 'QtFuture::connect' declared here
+  908 | static QFuture<ArgsType<Signal>> connect(Sender *sender, Signal signal)
+      |                                  ^~~~~~~
+ShijimaManager.cc:428:17: error: 'connect' was not declared in this scope; did you mean 'QtFuture::connect'?
+  428 |                 connect(action, &QAction::triggered, [this, customAction, \
+      |                 ^~~~~~~
+ShijimaManager.cc:448:13: note: in expansion of macro 'addPreset'
+  448 |             addPreset(2.00);
+      |             ^~~~~~~~~
+C:/msys64/mingw64/include/qt6/QtCore/qfuture_impl.h:908:34: note: 'QtFuture::connect' declared here
+  908 | static QFuture<ArgsType<Signal>> connect(Sender *sender, Signal signal)
+      |                                  ^~~~~~~
+ShijimaManager.cc: In lambda function:
+ShijimaManager.cc:455:39: error: no matching function for call to 'QDialog::QDialog(<brace-enclosed initializer list>)'
+  455 |                 QDialog dialog { this };
+      |                                       ^
+ShijimaManager.cc:455:39: note: there are 2 candidates
+In file included from C:/msys64/mingw64/include/qt6/QtWidgets/qinputdialog.h:12:
+C:/msys64/mingw64/include/qt6/QtWidgets/qdialog.h:60:5: note: candidate 1: 'QDialog::QDialog(QDialogPrivate&, QWidget*, Qt::WindowFlags)'
+   60 |     QDialog(QDialogPrivate &, QWidget *parent, Qt::WindowFlags f = Qt::WindowFlags());
+      |     ^~~~~~~
+C:/msys64/mingw64/include/qt6/QtWidgets/qdialog.h:60:5: note: candidate expects 3 arguments, 1 provided
+C:/msys64/mingw64/include/qt6/QtWidgets/qdialog.h:28:14: note: candidate 2: 'QDialog::QDialog(QWidget*, Qt::WindowFlags)'
+   28 |     explicit QDialog(QWidget *parent = nullptr, Qt::WindowFlags f = Qt::WindowFlags());
+      |              ^~~~~~~
+C:/msys64/mingw64/include/qt6/QtWidgets/qdialog.h:28:31: note: no known conversion for argument 1 from 'ShijimaManager*' to 'QWidget*'
+   28 |     explicit QDialog(QWidget *parent = nullptr, Qt::WindowFlags f = Qt::WindowFlags());
+      |                      ~~~~~~~~~^~~~~~~~~~~~~~~~
+ShijimaManager.cc:470:17: error: 'connect' was not declared in this scope; did you mean 'QtFuture::connect'?
+  470 |                 connect(&slider, &QSlider::valueChanged,
+      |                 ^~~~~~~
+      |                 QtFuture::connect
+C:/msys64/mingw64/include/qt6/QtCore/qfuture_impl.h:908:34: note: 'QtFuture::connect' declared here
+  908 | static QFuture<ArgsType<Signal>> connect(Sender *sender, Signal signal)
+      |                                  ^~~~~~~
+ShijimaManager.cc: In member function 'void ShijimaManager::buildToolbar()':
+ShijimaManager.cc:452:13: error: 'connect' was not declared in this scope; did you mean 'QtFuture::connect'?
+  452 |             connect(customAction, &QAction::triggered, [this,
+      |             ^~~~~~~
+      |             QtFuture::connect
+C:/msys64/mingw64/include/qt6/QtCore/qfuture_impl.h:908:34: note: 'QtFuture::connect' declared here
+  908 | static QFuture<ArgsType<Signal>> connect(Sender *sender, Signal signal)
+      |                                  ^~~~~~~
+ShijimaManager.cc:495:9: error: 'connect' was not declared in this scope; did you mean 'QtFuture::connect'?
+  495 |         connect(action, &QAction::triggered, [this]() {
+      |         ^~~~~~~
+      |         QtFuture::connect
+C:/msys64/mingw64/include/qt6/QtCore/qfuture_impl.h:908:34: note: 'QtFuture::connect' declared here
+  908 | static QFuture<ArgsType<Signal>> connect(Sender *sender, Signal signal)
+      |                                  ^~~~~~~
+ShijimaManager.cc: In lambda function:
+ShijimaManager.cc:511:49: error: no matching function for call to 'ShijimaLicensesDialog::ShijimaLicensesDialog(<brace-enclosed initializer list>)'
+  511 |             ShijimaLicensesDialog dialog { this };
+      |                                                 ^
+ShijimaManager.cc:511:49: note: there is 1 candidate
+In file included from ShijimaManager.cc:41:
+ShijimaLicensesDialog.hpp:26:5: note: candidate 1: 'ShijimaLicensesDialog::ShijimaLicensesDialog(QWidget*)'
+   26 |     ShijimaLicensesDialog(QWidget *parent);
+      |     ^~~~~~~~~~~~~~~~~~~~~
+ShijimaLicensesDialog.hpp:26:36: note: no known conversion for argument 1 from 'ShijimaManager*' to 'QWidget*'
+   26 |     ShijimaLicensesDialog(QWidget *parent);
+      |                           ~~~~~~~~~^~~~~~
+ShijimaManager.cc: In member function 'void ShijimaManager::buildToolbar()':
+ShijimaManager.cc:510:9: error: 'connect' was not declared in this scope; did you mean 'QtFuture::connect'?
+  510 |         connect(action, &QAction::triggered, [this](){
+      |         ^~~~~~~
+      |         QtFuture::connect
+C:/msys64/mingw64/include/qt6/QtCore/qfuture_impl.h:908:34: note: 'QtFuture::connect' declared here
+  908 | static QFuture<ArgsType<Signal>> connect(Sender *sender, Signal signal)
+      |                                  ^~~~~~~
+ShijimaManager.cc: At global scope:
+ShijimaManager.cc:574:1: error: expected declaration before '}' token
+  574 | }
+      | ^
+ShijimaManager.cc: In member function 'void ShijimaManager::importWithDialog(const QList<QString>&)':
+ShijimaManager.cc:577:68: error: no matching function for call to 'ForcedProgressDialog::ForcedProgressDialog(<brace-enclosed initializer list>)'
+  577 |     ForcedProgressDialog *dialog = new ForcedProgressDialog { this };
+      |                                                                    ^
+ShijimaManager.cc:577:68: note: there is 1 candidate
+In file included from ShijimaManager.cc:47:
+ForcedProgressDialog.hpp:29:5: note: candidate 1: 'ForcedProgressDialog::ForcedProgressDialog(QWidget*)'
+   29 |     ForcedProgressDialog(QWidget *parent = nullptr): QProgressDialog(parent) {}
+      |     ^~~~~~~~~~~~~~~~~~~~
+ForcedProgressDialog.hpp:29:35: note: no known conversion for argument 1 from 'ShijimaManager*' to QWidget*'
+   29 |     ForcedProgressDialog(QWidget *parent = nullptr): QProgressDialog(parent) {}
+      |                          ~~~~~~~~~^~~~~~~~~~~~~~~~
+ShijimaManager.cc: In lambda function:
+ShijimaManager.cc:598:19: error: 'class ShijimaManager' has no member named 'show'
+  598 |             this->show();
+      |                   ^~~~
+ShijimaManager.cc:612:55: error: no matching function for call to 'QMessageBox::QMessageBox(<brace-enclosed initializer list>)'
+  612 |                 QMessageBox::StandardButton::Ok, this };
+      |                                                       ^
+ShijimaManager.cc:612:55: note: there are 3 candidates
+C:/msys64/mingw64/include/qt6/QtWidgets/qmessagebox.h:215:5: note: candidate 1: 'QMessageBox::QMessageBox(const QString&, const QString&, Icon, int, int, int, QWidget*, Qt::WindowFlags)'
+  215 |     QMessageBox(const QString &title, const QString &text, Icon icon,
+      |     ^~~~~~~~~~~
+C:/msys64/mingw64/include/qt6/QtWidgets/qmessagebox.h:215:5: note: candidate expects 8 arguments, 5 provided
+C:/msys64/mingw64/include/qt6/QtWidgets/qmessagebox.h:115:5: note: candidate 2: 'QMessageBox::QMessageBox(Icon, const QString&, const QString&, StandardButtons, QWidget*, Qt::WindowFlags)'
+  115 |     QMessageBox(Icon icon, const QString &title, const QString &text,
+      |     ^~~~~~~~~~~
+C:/msys64/mingw64/include/qt6/QtWidgets/qmessagebox.h:116:62: note: no known conversion for argument 5 from 'ShijimaManager*' to 'QWidget*'
+  116 |                 StandardButtons buttons = NoButton, QWidget *parent = nullptr,
+      |                                                     ~~~~~~~~~^~~~~~~~~~~~~~~~
+C:/msys64/mingw64/include/qt6/QtWidgets/qmessagebox.h:114:14: note: candidate 3: 'QMessageBox::QMessageBox(QWidget*)'
+  114 |     explicit QMessageBox(QWidget *parent = nullptr);
+      |              ^~~~~~~~~~~
+C:/msys64/mingw64/include/qt6/QtWidgets/qmessagebox.h:114:14: note: candidate expects 1 argument, 5 provided
+ShijimaManager.cc: In member function 'void ShijimaManager::showEvent(QShowEvent*)':
+ShijimaManager.cc:619:30: error: qualified-id in declaration before '(' token
+  619 |     PlatformWidget::showEvent(event);
+      |                              ^
+ShijimaManager.cc:631:50: error: no matching function for call to 'QMessageBox::QMessageBox(<brace-enclosed initializer list>)'
+  631 |             auto msgBox = new QMessageBox { this };
+      |                                                  ^
+ShijimaManager.cc:631:50: note: there are 3 candidates
+C:/msys64/mingw64/include/qt6/QtWidgets/qmessagebox.h:215:5: note: candidate 1: 'QMessageBox::QMessageBox(const QString&, const QString&, Icon, int, int, int, QWidget*, Qt::WindowFlags)'
+  215 |     QMessageBox(const QString &title, const QString &text, Icon icon,
+      |     ^~~~~~~~~~~
+C:/msys64/mingw64/include/qt6/QtWidgets/qmessagebox.h:215:5: note: candidate expects 8 arguments, 1 provided
+C:/msys64/mingw64/include/qt6/QtWidgets/qmessagebox.h:115:5: note: candidate 2: 'QMessageBox::QMessageBox(Icon, const QString&, const QString&, StandardButtons, QWidget*, Qt::WindowFlags)'
+  115 |     QMessageBox(Icon icon, const QString &title, const QString &text,
+      |     ^~~~~~~~~~~
+C:/msys64/mingw64/include/qt6/QtWidgets/qmessagebox.h:115:5: note: candidate expects 6 arguments, 1 provided
+C:/msys64/mingw64/include/qt6/QtWidgets/qmessagebox.h:114:14: note: candidate 3: 'QMessageBox::QMessageBox(QWidget*)'
+  114 |     explicit QMessageBox(QWidget *parent = nullptr);
+      |              ^~~~~~~~~~~
+C:/msys64/mingw64/include/qt6/QtWidgets/qmessagebox.h:114:35: note: no known conversion for argument 1 from 'ShijimaManager*' to 'QWidget*'
+  114 |     explicit QMessageBox(QWidget *parent = nullptr);
+      |                          ~~~~~~~~~^~~~~~~~~~~~~~~~
+ShijimaManager.cc: In destructor 'ShijimaManager::~ShijimaManager()':
+ShijimaManager.cc:685:5: error: 'disconnect' was not declared in this scope
+  685 |     disconnect(qApp, &QGuiApplication::screenAdded,
+      |     ^~~~~~~~~~
+ShijimaManager.cc: In constructor 'ShijimaManager::ShijimaManager(QWidget*)':
+ShijimaManager.cc:752:5: error: class 'ShijimaManager' does not have any field named 'PlatformWidge'
+  752 |     PlatformWidget(parent, PlatformWidget::ShowOnAllDesktops),
+      |     ^~~~~~~~~~~~~~
+ShijimaManager.cc:752:28: error: 'template<class T> class PlatformWidget' used without template arguments
+  752 |     PlatformWidget(parent, PlatformWidget::ShowOnAllDesktops),
+      |                            ^~~~~~~~~~~~~~
+ShijimaManager.cc:763:5: error: 'connect' was not declared in this scope; did you mean 'QtFuture::connect'?
+  763 |     connect(qApp, &QGuiApplication::screenAdded,
+      |     ^~~~~~~
+      |     QtFuture::connect
+C:/msys64/mingw64/include/qt6/QtCore/qfuture_impl.h:908:34: note: 'QtFuture::connect' declared here
+  908 | static QFuture<ArgsType<Signal>> connect(Sender *sender, Signal signal)
+      |                                  ^~~~~~~
+ShijimaManager.cc:789:5: error: 'setAcceptDrops' was not declared in this scope
+  789 |     setAcceptDrops(true);
+      |     ^~~~~~~~~~~~~~
+ShijimaManager.cc:791:21: error: 'startTimer' was not declared in this scope; did you mean 'strftim'?
+  791 |     m_mascotTimer = startTimer(40 / SHIJIMAQT_SUBTICK_COUNT);
+      |                     ^~~~~~~~~~
+      |                     strftime
+ShijimaManager.cc:795:21: error: 'windowFlags' was not declared in this scope
+  795 |     setWindowFlags((windowFlags() | Qt::CustomizeWindowHint | Qt::MaximizeUsingFullscreenGeometryHint |
+      |                     ^~~~~~~~~~~
+ShijimaManager.cc:795:67: warning: 'Qt::MaximizeUsingFullscreenGeometryHint' is deprecated: Use Qt::ExpandedClientAreaHint instead [-Wdeprecated-declarations]
+  795 |     setWindowFlags((windowFlags() | Qt::CustomizeWindowHint | Qt::MaximizeUsingFullscreenGeometryHint |
+      |                                                                   ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+In file included from C:/msys64/mingw64/include/qt6/QtCore/qobjectdefs.h:12,
+                 from C:/msys64/mingw64/include/qt6/QtGui/qwindowdefs.h:8,
+                 from C:/msys64/mingw64/include/qt6/QtWidgets/qwidget.h:9:
+C:/msys64/mingw64/include/qt6/QtCore/qnamespace.h:244:9: note: declared here
+  244 |         MaximizeUsingFullscreenGeometryHint Q_DECL_ENUMERATOR_DEPRECATED_X(
+      |         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ShijimaManager.cc:795:5: error: 'setWindowFlags' was not declared in this scope
+  795 |     setWindowFlags((windowFlags() | Qt::CustomizeWindowHint | Qt::MaximizeUsingFullscreenGeometryHint |
+      |     ^~~~~~~~~~~~~~
+ShijimaManager.cc:802:37: error: cannot convert 'ShijimaManager*' to 'QObject*'
+  802 |     m_listWidget.installEventFilter(this);
+      |                                     ^~~~
+      |                                     |
+      |                                     ShijimaManager*
+In file included from C:/msys64/mingw64/include/qt6/QtWidgets/qwidget.h:10:
+C:/msys64/mingw64/include/qt6/QtCore/qobject.h:206:38: note: initializing argument 1 of 'void QObject::installEventFilter(QObject*)'
+  206 |     void installEventFilter(QObject *filterObj);
+      |                             ~~~~~~~~~^~~~~~~~~
+ShijimaManager.cc:804:5: error: 'setCentralWidget' was not declared in this scope
+  804 |     setCentralWidget(&m_listWidget);
+      |     ^~~~~~~~~~~~~~~~
+ShijimaManager.cc:818:33: error: no matching function for call to 'QTimer::QTimer(ShijimaManager*)'
+  818 |     m_petTimer = new QTimer(this);
+      |                                 ^
+ShijimaManager.cc:818:33: note: there is 1 candidate
+In file included from C:/msys64/mingw64/include/qt6/QtCore/QTimer:1,
+                 from PlatformWidget.hpp:23:
+C:/msys64/mingw64/include/qt6/QtCore/qtimer.h:28:14: note: candidate 1: 'QTimer::QTimer(QObject*)'
+   28 |     explicit QTimer(QObject *parent = nullptr);
+      |              ^~~~~~
+C:/msys64/mingw64/include/qt6/QtCore/qtimer.h:28:30: note: no known conversion for argument 1 from ShijimaManager*' to 'QObject*'
+   28 |     explicit QTimer(QObject *parent = nullptr);
+      |                     ~~~~~~~~~^~~~~~~~~~~~~~~~
+ShijimaManager.cc: In lambda function:
+ShijimaManager.cc:823:15: error: 'class ShijimaManager' has no member named 'update'
+  823 |         this->update();
+      |               ^~~~~~
+ShijimaManager.cc: In member function 'void ShijimaManager::askClose()':
+ShijimaManager.cc:955:31: error: no matching function for call to 'QMessageBox::QMessageBox(<brace-enclosed initializer list>)'
+  955 |     QMessageBox msgBox { this };
+      |                               ^
+ShijimaManager.cc:955:31: note: there are 3 candidates
+C:/msys64/mingw64/include/qt6/QtWidgets/qmessagebox.h:215:5: note: candidate 1: 'QMessageBox::QMessageBox(const QString&, const QString&, Icon, int, int, int, QWidget*, Qt::WindowFlags)'
+  215 |     QMessageBox(const QString &title, const QString &text, Icon icon,
+      |     ^~~~~~~~~~~
+C:/msys64/mingw64/include/qt6/QtWidgets/qmessagebox.h:215:5: note: candidate expects 8 arguments, 1 provided
+C:/msys64/mingw64/include/qt6/QtWidgets/qmessagebox.h:115:5: note: candidate 2: 'QMessageBox::QMessageBox(Icon, const QString&, const QString&, StandardButtons, QWidget*, Qt::WindowFlags)'
+  115 |     QMessageBox(Icon icon, const QString &title, const QString &text,
+      |     ^~~~~~~~~~~
+C:/msys64/mingw64/include/qt6/QtWidgets/qmessagebox.h:115:5: note: candidate expects 6 arguments, 1 provided
+C:/msys64/mingw64/include/qt6/QtWidgets/qmessagebox.h:114:14: note: candidate 3: 'QMessageBox::QMessageBox(QWidget*)'
+  114 |     explicit QMessageBox(QWidget *parent = nullptr);
+      |              ^~~~~~~~~~~
+C:/msys64/mingw64/include/qt6/QtWidgets/qmessagebox.h:114:35: note: no known conversion for argument 1 from 'ShijimaManager*' to 'QWidget*'
+  114 |     explicit QMessageBox(QWidget *parent = nullptr);
+      |                          ~~~~~~~~~^~~~~~~~~~~~~~~~
+ShijimaManager.cc:967:9: error: 'close' was not declared in this scope; did you mean 'fclose'?
+  967 |         close();
+      |         ^~~~~
+      |         fclose
+ShijimaManager.cc: In member function 'void ShijimaManager::setManagerVisible(bool)':
+ShijimaManager.cc:977:13: error: 'window' was not declared in this scope; did you mean 'QWindow'?
+  977 |         if (window() != nullptr) {
+      |             ^~~~~~
+      |             QWindow
+ShijimaManager.cc:980:9: error: 'setMinimumSize' was not declared in this scope
+  980 |         setMinimumSize(480, 320);
+      |         ^~~~~~~~~~~~~~
+ShijimaManager.cc:981:9: error: 'setMaximumSize' was not declared in this scope
+  981 |         setMaximumSize(999999, 999999);
+      |         ^~~~~~~~~~~~~~
+ShijimaManager.cc:982:9: error: 'move' was not declared in this scope; did you mean 'std::move'?
+  982 |         move(geometry.width() / 2 - 240, geometry.height() / 2 - 160);
+      |         ^~~~
+      |         std::move
+In file included from C:/msys64/mingw64/include/c++/15.2.0/algorithm:89,
+                 from C:/msys64/mingw64/include/qt6/QtCore/qflags.h:10,
+                 from C:/msys64/mingw64/include/qt6/QtCore/qglobal.h:49,
+                 from C:/msys64/mingw64/include/qt6/QtGui/qtguiglobal.h:7,
+                 from C:/msys64/mingw64/include/qt6/QtWidgets/qtwidgetsglobal.h:8,
+                 from C:/msys64/mingw64/include/qt6/QtWidgets/qmainwindow.h:8:
+C:/msys64/mingw64/include/c++/15.2.0/pstl/glue_algorithm_defs.h:354:1: note: 'std::move' declared here
+  354 | move(_ExecutionPolicy&& __exec, _ForwardIterator1 __first, _ForwardIterator1 __last, _ForwardIterator2 __d_first);
+      | ^~~~
+ShijimaManager.cc:986:9: error: 'setFixedSize' was not declared in this scope
+  986 |         setFixedSize(1, 1);
+      |         ^~~~~~~~~~~~
+ShijimaManager.cc:987:9: error: 'move' was not declared in this scope; did you mean 'std::move'?
+  987 |         move(geometry.width() * 10, geometry.height() * 10);
+      |         ^~~~
+      |         std::move
+C:/msys64/mingw64/include/c++/15.2.0/pstl/glue_algorithm_defs.h:354:1: note: 'std::move' declared here
+  354 | move(_ExecutionPolicy&& __exec, _ForwardIterator1 __first, _ForwardIterator1 __last, _ForwardIterator2 __d_first);
+      | ^~~~
+ShijimaManager.cc:988:9: error: 'clearFocus' was not declared in this scope
+  988 |         clearFocus();
+      |         ^~~~~~~~~~
+ShijimaManager.cc:989:13: error: 'window' was not declared in this scope; did you mean 'QWindow'?
+  989 |         if (window() != nullptr) {
+      |             ^~~~~~
+      |             QWindow
+ShijimaManager.cc: In member function 'QWidget* ShijimaManager::mascotParent()':
+ShijimaManager.cc:1018:16: error: cannot convert 'ShijimaManager*' to 'QWidget*' in return
+ 1018 |         return this;
+      |                ^~~~
+      |                |
+      |                ShijimaManager*
+ShijimaManager.cc: In member function 'void ShijimaManager::tick()':
+ShijimaManager.cc:1043:9: error: 'isMinimized' was not declared in this scope
+ 1043 |     if (isMinimized()) {
+      |         ^~~~~~~~~~~
+ShijimaManager.cc:1044:24: error: 'windowState' was not declared in this scope; did you mean 'QWindowsStyle'?
+ 1044 |         setWindowState(windowState() & ~Qt::WindowMinimized);
+      |                        ^~~~~~~~~~~
+      |                        QWindowsStyle
+ShijimaManager.cc:1044:9: error: 'setWindowState' was not declared in this scope; did you mean 'setWindowedMode'?
+ 1044 |         setWindowState(windowState() & ~Qt::WindowMinimized);
+      |         ^~~~~~~~~~~~~~
+      |         setWindowedMode
+ShijimaManager.cc:1047:14: error: 'isMaximized' was not declared in this scope
+ 1047 |     else if (isMaximized()) {
+      |              ^~~~~~~~~~~
+ShijimaManager.cc:1054:33: error: 'isMinimized' was not declared in this scope
+ 1054 |         if (!windowedMode() && (isMinimized() || !m_wasVisible)) {
+      |                                 ^~~~~~~~~~~
+ShijimaManager.cc:1055:28: error: 'windowState' was not declared in this scope; did you mean 'QWindowsStyle'?
+ 1055 |             setWindowState(windowState() & ~Qt::WindowMinimized);
+      |                            ^~~~~~~~~~~
+      |                            QWindowsStyle
+ShijimaManager.cc:1055:13: error: 'setWindowState' was not declared in this scope; did you mean 'setWindowedMode'?
+ 1055 |             setWindowState(windowState() & ~Qt::WindowMinimized);
+      |             ^~~~~~~~~~~~~~
+      |             setWindowedMode
+ShijimaManager.cc: In member function 'QScreen* ShijimaManager::mascotScreen()':
+ShijimaManager.cc:1144:24: error: 'class ShijimaManager' has no member named 'screen'
+ 1144 |         screen = this->screen();
+      |                        ^~~~~~
+ShijimaManager.cc: In member function 'bool ShijimaManager::eventFilter(QObject*, QEvent*)':
+ShijimaManager.cc:1181:36: error: cannot call member function 'virtual bool QObject::eventFilter(QObject*, QEvent*)' without object
+ 1181 |     return QMainWindow::eventFilter(obj, event);
+      |            ~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~
+make: *** [common.mk:163: main.o] Error 1
+make: *** [common.mk:163: ShijimaManager.o] Error 1
+make: *** [common.mk:163: ShijimaHttpApi.o] Error 1
+
+dkw01@Podo MINGW64 /c/Users/dkw01/Shijima-Qt
+$
