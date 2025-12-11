@@ -43,9 +43,12 @@
 class QVBoxLayout;
 class QWidget;
 
-class ShijimaManager : public PlatformWidget<QMainWindow>
+class ShijimaManager : public PlatformWidget
 {
+    Q_OBJECT
+
 public:
+    explicit ShijimaManager(QWidget *parent = nullptr);
     static ShijimaManager *defaultManager();
     static void finalize();
     void updateEnvironment();
