@@ -43,7 +43,6 @@
 #include <QDirIterator>
 #include <QDesktopServices>
 #include <shijima/mascot/factory.hpp>
-#include <shimejifinder/analyze.hpp>
 #include <QStandardPaths>
 #include "ForcedProgressDialog.hpp"
 #include <QAbstractItemModel>
@@ -560,11 +559,36 @@ void ShijimaManager::reloadMascots(std::set<std::string> const& mascots) {
 }
 
 std::set<std::string> ShijimaManager::import(QString const& path) noexcept {
-    try {
-        auto ar = shimejifinder::analyze(path.toStdString());
-        ar->extract(m_mascotsPath.toStdString());
-        return ar->shimejis();
+    // path = 사용자가 고른 이미지 파일 또는 펫 폴더
+    // 지금은 간단하게 “펫 폴더 구조를 복사하는 방식”으로 구현 가능
+
+    QString petName = QFileInfo(path).baseName();
+    QString targetDir = m_mascotsPath + "/" + petName;
+
+    QDir().mkpath(targetDir);
+    QFile::copy(path, targetDir + "/pet.png");
+
+    // profile.json 생성 (기본 템플릿)
+    QFile profileFile(targetDir + "/profile.json");
+    if (profileFile.open(QIODevice::WriteOnly)) {
+        profileFile.write(R"({
+            "name": "New Pet",
+            "owner_name": "user",
+            "personality": "neutral",
+            "speaking_style": "friendly",
+            "relationship": "unknown",
+            "topics_like": [],
+            "topics_avoid": []
+        })");
+        profileFile.close();
     }
+
+    // VirtualPetState 갱신
+    PetLoader::loadPet(targetDir, m_petState);
+
+    return { petName.toStdString() };
+}
+
     catch (std::exception &ex) {
         std::cerr << "import failed: " << ex.what() << std::endl;
         return {};
